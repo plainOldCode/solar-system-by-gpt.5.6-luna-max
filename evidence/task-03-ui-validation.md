@@ -21,6 +21,23 @@ Owned implementation paths are `src/ui/**`, `src/styles/**`, and this evidence f
 
 The browser smoke run used headless Chromium with SwiftShader-compatible launch flags and recorded zero console errors, page errors, or failed requests. The temporary smoke script is outside the repository and was not staged.
 
+## Re-verification run
+
+Re-verified from `HEAD 7a48262bb58577f72e9e03aa7bc178c21cac1d1c` at `2026-08-15T05:37:21Z` (UTC). The tracked worktree was clean before and after validation; local `dist/` and `node_modules/` remain untracked validation outputs.
+
+| Command / probe | Exit/result |
+| --- | ---: |
+| `npm run typecheck` | 0; TypeScript completed with no diagnostics |
+| `npm run build` | 0; TypeScript check and Vite 7.3.6 production build completed (`dist/index.html`, 0.77 kB) |
+| `npm run dev -- --host 127.0.0.1` | Started successfully; Vite reported ready in 61 ms at `http://127.0.0.1:5173/`; HTTP `HEAD /` returned 200; server stopped after smoke validation |
+| `node /tmp/solar-system-smoke.mjs` | 0; all 15 browser assertions passed with zero console errors, page errors, or request failures |
+| `git diff --check HEAD` | 0 |
+| `git diff-tree --check -r HEAD` | 0 |
+| forbidden-path check against `HEAD` | 0; all committed paths are task-owned |
+| `git status --short --untracked-files=no` | 0; no tracked modifications |
+
+Fresh smoke observations: the default state mounted a canvas with `log`/`enhanced-visibility` scales and 10 visible primary labels; play/pause, distance and size selectors, Earth raycast selection, hover tooltip, Moon keyboard focus, OrbitControls drag/zoom, moon/label visibility, complete-view reset, and the 390×844 responsive layout all passed. The current smoke screenshots were written to `/tmp/solar-ui-default.png`, `/tmp/solar-ui-mobile.png`, and `/tmp/solar-ui-desktop.png` outside the repository.
+
 ## Browser smoke assertions
 
 The fresh browser session verified:
