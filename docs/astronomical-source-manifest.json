@@ -1,0 +1,54 @@
+{
+  "schemaVersion": 1,
+  "datasetRevision": "2026-08-15-rounded-v1",
+  "dataAsOf": "2026-08-15",
+  "accessedOn": "2026-08-15",
+  "datasetPath": "src/data/solarSystemData.ts",
+  "sources": [
+    {
+      "id": "nasa-planetary-fact-sheet",
+      "publisher": "NASA Goddard Space Flight Center / NSSDC",
+      "title": "Planetary Fact Sheet",
+      "url": "https://nssdc.gsfc.nasa.gov/planetary/factsheet/",
+      "fields": ["radiusKm", "semiMajorAxis", "orbitalPeriodDays", "rotationPeriodHours", "eccentricity", "inclinationDeg"],
+      "bodyScope": "Sun and planets"
+    },
+    {
+      "id": "jpl-planet-physical-parameters",
+      "publisher": "NASA Jet Propulsion Laboratory / Solar System Dynamics",
+      "title": "Planetary Physical Parameters",
+      "url": "https://ssd.jpl.nasa.gov/planets/phys_par.html",
+      "fields": ["radiusKm", "rotationPeriodHours", "axialTiltDeg"],
+      "bodyScope": "Sun and planets"
+    },
+    {
+      "id": "jpl-natural-satellite-physical-parameters",
+      "publisher": "NASA Jet Propulsion Laboratory / Solar System Dynamics",
+      "title": "Natural Satellite Physical Parameters",
+      "url": "https://ssd.jpl.nasa.gov/sats/phys_par/",
+      "fields": ["radiusKm", "semiMajorAxis", "orbitalPeriodDays", "eccentricity", "inclinationDeg"],
+      "bodyScope": "Required major moons"
+    },
+    {
+      "id": "jpl-small-body-database",
+      "publisher": "NASA Jet Propulsion Laboratory / Solar System Dynamics",
+      "title": "Small-Body Database Lookup — Pluto (134340)",
+      "url": "https://ssd-api.jpl.nasa.gov/sbdb.api?sstr=134340",
+      "fields": ["type", "semiMajorAxis", "eccentricity", "inclinationDeg"],
+      "bodyScope": "Pluto and Pluto-system context"
+    }
+  ],
+  "fieldConventions": {
+    "radiusKm": "Physical mean/equatorial radius in kilometres; never a render-space radius.",
+    "semiMajorAxis": "AU for heliocentric bodies and km for moons; see semiMajorAxisUnit on each record.",
+    "rotationPeriodHours": "Positive sidereal duration in hours; rotationDirection carries prograde/retrograde direction.",
+    "missingOptionalFields": "A missing field indicates that a stable source value was not available for the rounded display dataset; no value is fabricated."
+  },
+  "bodySourceAssignments": {
+    "heliocentricBodies": ["nasa-planetary-fact-sheet", "jpl-planet-physical-parameters"],
+    "pluto": ["nasa-planetary-fact-sheet", "jpl-planet-physical-parameters", "jpl-small-body-database"],
+    "majorMoons": ["jpl-natural-satellite-physical-parameters"],
+    "plutoMoons": ["jpl-natural-satellite-physical-parameters", "jpl-small-body-database"]
+  },
+  "roundingPolicy": "Values are rounded for a static browser visualization. Ordering, units, and major physical relationships are retained; this is not an epoch-specific ephemeris."
+}
