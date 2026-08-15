@@ -1,12 +1,12 @@
 # Three.js Logarithmic Solar System — Kanban Triage Root
 
 ## Inherited project contract
-- Canonical workspace: `/Users/miniadmin/Desktop/threejs-solar-system`
+- Canonical workspace: `<repo-root>`
 - Board: `threejs-solar-system`
 - Required worker profile/assignee: `default` for every new coding, validation, integration, and aggregation task.
 - Execution policy: serial by default; do not enable parallel workers in the shared workspace.
 - Existing artifacts: this is a clean-slate project; preserve the in-repository source specification and all verified task-scoped commits.
-- Source of truth: `/Users/miniadmin/Desktop/threejs-solar-system/docs/threejs_solar_system_demo_prompt_en.md`
+- Source of truth: `<repo-root>/docs/threejs_solar_system_demo_prompt_en.md`
 - Completion invariant: validate the actual artifact -> commit task-scoped changes -> record evidence/comment -> call `kanban_complete`.
 - A source-only PASS, pseudocode, incomplete snippet, or worker summary without persisted evidence is not completion.
 
@@ -38,7 +38,7 @@ Workers must report changed files, forbidden-path check, validation commands and
 
 ## Authoritative source
 The complete user specification is preserved at:
-`/Users/miniadmin/Desktop/threejs-solar-system/docs/threejs_solar_system_demo_prompt_en.md`
+`<repo-root>/docs/threejs_solar_system_demo_prompt_en.md`
 
 Read that file before implementation. It is authoritative for all detailed requirements below.
 

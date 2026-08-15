@@ -803,8 +803,8 @@
       }
     ],
     "screenshots": {
-      "desktop": "/Users/miniadmin/Desktop/threejs-solar-system/evidence/final-acceptance-desktop.png",
-      "mobile": "/Users/miniadmin/Desktop/threejs-solar-system/evidence/final-acceptance-mobile.png"
+      "desktop": "<repo-root>/evidence/final-acceptance-desktop.png",
+      "mobile": "<repo-root>/evidence/final-acceptance-mobile.png"
     },
     "orbitControls": {
       "orbitDistance": 99.98443260237435,

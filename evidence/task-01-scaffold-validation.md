@@ -1,6 +1,6 @@
 # Task 01 scaffold validation evidence
 
-- Workspace: `/Users/miniadmin/Desktop/threejs-solar-system`
+- Workspace: `<repo-root>`
 - Validation timestamp (UTC): `2026-08-15T03:43:17Z`
 - Source specification read first: `docs/threejs_solar_system_demo_prompt_en.md`
 

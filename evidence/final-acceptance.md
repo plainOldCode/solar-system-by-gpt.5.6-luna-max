@@ -2,7 +2,7 @@
 
 ## Scope and provenance
 
-- Workspace: `/Users/miniadmin/Desktop/threejs-solar-system`
+- Workspace: `<repo-root>`
 - Branch: `main`
 - Application source validated at pre-integration HEAD: `be82344da0b133b666da9ed049c1027b09f82b20`
 - Authoritative requirements: `docs/threejs_solar_system_demo_prompt_en.md`

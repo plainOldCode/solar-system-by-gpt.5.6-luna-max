@@ -1,7 +1,7 @@
 # Task 03 UI validation evidence
 
 - Task: `t_c80c9b0a`
-- Workspace: `/Users/miniadmin/Desktop/threejs-solar-system`
+- Workspace: `<repo-root>`
 - Validation timestamp (UTC): `2026-08-15T06:10:57Z`
 - Validation source HEAD before this task commit: `5290eb15098817f7b9811ca46ff06551a44c784a`
 - Branch: `main`

@@ -1,7 +1,7 @@
 # Task 02 scene/core validation
 
 Date of validation: 2026-08-15T04:03:17Z (UTC)
-Workspace: `/Users/miniadmin/Desktop/threejs-solar-system`
+Workspace: `<repo-root>`
 
 ## Scope
 
