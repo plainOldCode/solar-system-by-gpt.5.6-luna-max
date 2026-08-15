@@ -1,0 +1,76 @@
+{
+  "generatedAt": "2026-08-15T06:40:36.901Z",
+  "base": "be82344da0b133b666da9ed049c1027b09f82b20",
+  "head": "be82344da0b133b666da9ed049c1027b09f82b20",
+  "statusLines": [
+    "A  evidence/final-acceptance-desktop.png",
+    "A  evidence/final-acceptance-mobile.png",
+    "A  evidence/final-acceptance-smoke.json",
+    "A  evidence/final-acceptance.md",
+    "A  evidence/prior-commit-audit.json",
+    "A  evidence/source-acceptance.json",
+    "A  evidence/task-scope.json",
+    "A  scripts/final-acceptance-smoke.cjs",
+    "A  scripts/source-acceptance-check.mjs",
+    "A  scripts/verify-prior-commits.mjs",
+    "A  scripts/verify-task-scope.mjs",
+    "?? dist/",
+    "?? node_modules/"
+  ],
+  "changedFromBase": [
+    "evidence/final-acceptance-desktop.png",
+    "evidence/final-acceptance-mobile.png",
+    "evidence/final-acceptance-smoke.json",
+    "evidence/final-acceptance.md",
+    "evidence/prior-commit-audit.json",
+    "evidence/source-acceptance.json",
+    "evidence/task-scope.json",
+    "scripts/final-acceptance-smoke.cjs",
+    "scripts/source-acceptance-check.mjs",
+    "scripts/verify-prior-commits.mjs",
+    "scripts/verify-task-scope.mjs"
+  ],
+  "stagedPaths": [
+    "evidence/final-acceptance-desktop.png",
+    "evidence/final-acceptance-mobile.png",
+    "evidence/final-acceptance-smoke.json",
+    "evidence/final-acceptance.md",
+    "evidence/prior-commit-audit.json",
+    "evidence/source-acceptance.json",
+    "evidence/task-scope.json",
+    "scripts/final-acceptance-smoke.cjs",
+    "scripts/source-acceptance-check.mjs",
+    "scripts/verify-prior-commits.mjs",
+    "scripts/verify-task-scope.mjs"
+  ],
+  "taskOwnedPaths": [
+    "evidence/final-acceptance-desktop.png",
+    "evidence/final-acceptance-mobile.png",
+    "evidence/final-acceptance-smoke.json",
+    "evidence/final-acceptance.md",
+    "evidence/prior-commit-audit.json",
+    "evidence/source-acceptance.json",
+    "evidence/task-scope.json",
+    "scripts/final-acceptance-smoke.cjs",
+    "scripts/source-acceptance-check.mjs",
+    "scripts/verify-prior-commits.mjs",
+    "scripts/verify-task-scope.mjs"
+  ],
+  "generatedValidationArtifacts": [
+    "dist/",
+    "node_modules/"
+  ],
+  "forbiddenPaths": [],
+  "allowedPrefixes": [
+    "scripts/",
+    "tests/",
+    "evidence/",
+    "src/main.ts",
+    "src/ui/bootstrap.ts"
+  ],
+  "generatedValidationPrefixes": [
+    "dist/",
+    "node_modules/"
+  ],
+  "passed": true
+}

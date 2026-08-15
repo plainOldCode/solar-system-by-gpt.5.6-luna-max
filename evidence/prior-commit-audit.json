@@ -1,0 +1,247 @@
+{
+  "generatedAt": "2026-08-15T06:38:33.577Z",
+  "head": "be82344da0b133b666da9ed049c1027b09f82b20",
+  "commits": [
+    {
+      "task": "task-01 scaffold/data/scales",
+      "expectedHash": "df2d1c79408a290f173f520abf6d92b058f07349",
+      "resolvedHash": "df2d1c79408a290f173f520abf6d92b058f07349",
+      "parent": "394484b666a2c709bddd079d891b107d7ed62b05",
+      "subject": "feat: add solar system scaffold and scale data",
+      "type": "commit",
+      "reachableFromHead": true,
+      "changedPaths": [
+        "README.md",
+        "docs/astronomical-source-manifest.json",
+        "docs/astronomical-source-manifest.md",
+        "evidence/task-01-scaffold-validation.md",
+        "index.html",
+        "package-lock.json",
+        "package.json",
+        "src/data/solarSystemData.ts",
+        "src/data/sourceCatalog.ts",
+        "src/scales/distanceScales.ts",
+        "src/scales/sizeScales.ts",
+        "src/types/astronomy.ts",
+        "tsconfig.json",
+        "vite.config.ts"
+      ],
+      "allowedPaths": [
+        "README.md",
+        "docs/",
+        "evidence/task-01-scaffold-validation.md",
+        "index.html",
+        "package.json",
+        "package-lock.json",
+        "src/data/",
+        "src/scales/",
+        "src/types/",
+        "tsconfig.json",
+        "vite.config.ts"
+      ],
+      "forbiddenPaths": [],
+      "evidence": {
+        "path": "evidence/task-01-scaffold-validation.md",
+        "present": true,
+        "mentionsForbiddenPathCheck": true
+      },
+      "passed": true
+    },
+    {
+      "task": "task-02 scene/core",
+      "expectedHash": "fc30167cbd03a92b1fc6ad7973293b16c5ae1cdc",
+      "resolvedHash": "fc30167cbd03a92b1fc6ad7973293b16c5ae1cdc",
+      "parent": "df2d1c79408a290f173f520abf6d92b058f07349",
+      "subject": "feat: implement solar-system scene and simulation core",
+      "type": "commit",
+      "reachableFromHead": true,
+      "changedPaths": [
+        "evidence/task-02-scene-validation.md",
+        "src/main.ts",
+        "src/rendering/RendererEnvironment.ts",
+        "src/rendering/index.ts",
+        "src/rendering/orbitLines.ts",
+        "src/rendering/proceduralMaterials.ts",
+        "src/rendering/starField.ts",
+        "src/rendering/three.d.ts",
+        "src/scene/CelestialBodyNode.ts",
+        "src/scene/SceneScaleManager.ts",
+        "src/scene/SolarSystemSceneController.ts",
+        "src/scene/index.ts",
+        "src/simulation/SimulationClock.ts",
+        "src/simulation/index.ts",
+        "src/simulation/orbitalMechanics.ts"
+      ],
+      "allowedPaths": [
+        "evidence/task-02-scene-validation.md",
+        "src/main.ts",
+        "src/rendering/",
+        "src/scene/",
+        "src/simulation/"
+      ],
+      "forbiddenPaths": [],
+      "evidence": {
+        "path": "evidence/task-02-scene-validation.md",
+        "present": true,
+        "mentionsForbiddenPathCheck": true
+      },
+      "passed": true
+    },
+    {
+      "task": "task-03 UI integration history",
+      "expectedHash": "27306450721479e171350d00ab423be14e34484f",
+      "resolvedHash": "27306450721479e171350d00ab423be14e34484f",
+      "parent": "fc30167cbd03a92b1fc6ad7973293b16c5ae1cdc",
+      "subject": "feat: add exported solar system UI integration",
+      "type": "commit",
+      "reachableFromHead": true,
+      "changedPaths": [
+        "src/ui/ControlPanel.ts",
+        "src/ui/InfoPanel.ts",
+        "src/ui/SolarSystemUI.ts",
+        "src/ui/controllerAdapter.ts",
+        "src/ui/index.ts",
+        "src/ui/labels.ts",
+        "src/ui/three-ui.d.ts"
+      ],
+      "allowedPaths": [
+        "src/ui/"
+      ],
+      "forbiddenPaths": [],
+      "evidence": {
+        "path": "evidence/task-03-ui-validation.md",
+        "present": true,
+        "mentionsForbiddenPathCheck": true
+      },
+      "passed": true
+    },
+    {
+      "task": "task-03 UI hardening",
+      "expectedHash": "7a48262bb58577f72e9e03aa7bc178c21cac1d1c",
+      "resolvedHash": "7a48262bb58577f72e9e03aa7bc178c21cac1d1c",
+      "parent": "27306450721479e171350d00ab423be14e34484f",
+      "subject": "fix: harden solar system UI integration",
+      "type": "commit",
+      "reachableFromHead": true,
+      "changedPaths": [
+        "evidence/task-03-ui-validation.md",
+        "src/styles/solar-system.css",
+        "src/ui/InfoPanel.ts",
+        "src/ui/SolarSystemUI.ts",
+        "src/ui/labels.ts"
+      ],
+      "allowedPaths": [
+        "evidence/task-03-ui-validation.md",
+        "src/styles/",
+        "src/ui/"
+      ],
+      "forbiddenPaths": [],
+      "evidence": {
+        "path": "evidence/task-03-ui-validation.md",
+        "present": true,
+        "mentionsForbiddenPathCheck": true
+      },
+      "passed": true
+    },
+    {
+      "task": "task-03 UI validation evidence",
+      "expectedHash": "91e919908cf19e319108304ad36dcb75c053f95d",
+      "resolvedHash": "91e919908cf19e319108304ad36dcb75c053f95d",
+      "parent": "7a48262bb58577f72e9e03aa7bc178c21cac1d1c",
+      "subject": "docs: record solar system UI revalidation",
+      "type": "commit",
+      "reachableFromHead": true,
+      "changedPaths": [
+        "evidence/task-03-ui-validation.md"
+      ],
+      "allowedPaths": [
+        "evidence/task-03-ui-validation.md",
+        "src/styles/",
+        "src/ui/"
+      ],
+      "forbiddenPaths": [],
+      "evidence": {
+        "path": "evidence/task-03-ui-validation.md",
+        "present": true,
+        "mentionsForbiddenPathCheck": true
+      },
+      "passed": true
+    },
+    {
+      "task": "task-03 UI live state",
+      "expectedHash": "5290eb15098817f7b9811ca46ff06551a44c784a",
+      "resolvedHash": "5290eb15098817f7b9811ca46ff06551a44c784a",
+      "parent": "91e919908cf19e319108304ad36dcb75c053f95d",
+      "subject": "fix: keep solar system UI state live",
+      "type": "commit",
+      "reachableFromHead": true,
+      "changedPaths": [
+        "src/styles/solar-system.css",
+        "src/ui/ControlPanel.ts",
+        "src/ui/InfoPanel.ts",
+        "src/ui/SolarSystemUI.ts"
+      ],
+      "allowedPaths": [
+        "src/styles/",
+        "src/ui/"
+      ],
+      "forbiddenPaths": [],
+      "evidence": {
+        "path": "evidence/task-03-ui-validation.md",
+        "present": true,
+        "mentionsForbiddenPathCheck": true
+      },
+      "passed": true
+    },
+    {
+      "task": "task-03 browser entry/evidence",
+      "expectedHash": "c24ce1155486d42d10d5579c9e1cd0507a2207e8",
+      "resolvedHash": "c24ce1155486d42d10d5579c9e1cd0507a2207e8",
+      "parent": "5290eb15098817f7b9811ca46ff06551a44c784a",
+      "subject": "test: validate solar system UI integration",
+      "type": "commit",
+      "reachableFromHead": true,
+      "changedPaths": [
+        "evidence/task-03-ui-validation.md",
+        "index.html"
+      ],
+      "allowedPaths": [
+        "evidence/task-03-ui-validation.md",
+        "index.html"
+      ],
+      "forbiddenPaths": [],
+      "evidence": {
+        "path": "evidence/task-03-ui-validation.md",
+        "present": true,
+        "mentionsForbiddenPathCheck": true
+      },
+      "passed": true
+    },
+    {
+      "task": "task-03 final browser-noise fix",
+      "expectedHash": "be82344da0b133b666da9ed049c1027b09f82b20",
+      "resolvedHash": "be82344da0b133b666da9ed049c1027b09f82b20",
+      "parent": "c24ce1155486d42d10d5579c9e1cd0507a2207e8",
+      "subject": "fix: clear solar UI browser validation noise",
+      "type": "commit",
+      "reachableFromHead": true,
+      "changedPaths": [
+        "evidence/task-03-ui-validation.md",
+        "index.html"
+      ],
+      "allowedPaths": [
+        "evidence/task-03-ui-validation.md",
+        "index.html"
+      ],
+      "forbiddenPaths": [],
+      "evidence": {
+        "path": "evidence/task-03-ui-validation.md",
+        "present": true,
+        "mentionsForbiddenPathCheck": true
+      },
+      "passed": true
+    }
+  ],
+  "passed": 8,
+  "failed": 0
+}

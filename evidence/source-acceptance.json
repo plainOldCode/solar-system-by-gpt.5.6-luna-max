@@ -1,0 +1,149 @@
+{
+  "generatedAt": "2026-08-15T06:38:33.266Z",
+  "sourceHead": "be82344da0b133b666da9ed049c1027b09f82b20",
+  "checks": [
+    {
+      "name": "dataset contains the complete required body count",
+      "passed": true,
+      "details": {
+        "actual": 35,
+        "expected": 35
+      }
+    },
+    {
+      "name": "dataset contains Sun, all planets, and Pluto",
+      "passed": true
+    },
+    {
+      "name": "dataset contains every required major moon under its declared parent",
+      "passed": true,
+      "details": {
+        "earth": [],
+        "mars": [],
+        "jupiter": [],
+        "saturn": [],
+        "uranus": [],
+        "neptune": [],
+        "pluto": []
+      }
+    },
+    {
+      "name": "all required ids are unique and represented",
+      "passed": true
+    },
+    {
+      "name": "physical records retain positive radius, orbital period, and explicit units",
+      "passed": true
+    },
+    {
+      "name": "heliocentric records use AU and moon records use km",
+      "passed": true
+    },
+    {
+      "name": "heliocentric order and orbital-period order are physically ordered",
+      "passed": true
+    },
+    {
+      "name": "Pluto has noticeably high eccentricity and inclination",
+      "passed": true,
+      "details": {
+        "eccentricity": 0.2488,
+        "inclinationDeg": 17.16
+      }
+    },
+    {
+      "name": "moon distances preserve each parent-system ordering",
+      "passed": true
+    },
+    {
+      "name": "source manifest linkage remains in the data model",
+      "passed": true
+    },
+    {
+      "name": "default heliocentric mapping is logarithmic and bounded",
+      "passed": true
+    },
+    {
+      "name": "linear and focus distance comparison modes are implemented",
+      "passed": true
+    },
+    {
+      "name": "moon distances use a separate local logarithmic mapping",
+      "passed": true
+    },
+    {
+      "name": "body sizes are independently mapped from physical radii",
+      "passed": true
+    },
+    {
+      "name": "all selectable size modes are present",
+      "passed": true
+    },
+    {
+      "name": "scene hierarchy carries moons under parent moon-system groups",
+      "passed": true
+    },
+    {
+      "name": "elliptical inclined orbits use Kepler mechanics and reusable orbit geometry",
+      "passed": true
+    },
+    {
+      "name": "orbital periods drive accumulated simulation positions",
+      "passed": true
+    },
+    {
+      "name": "Saturn and Uranus rings are procedural scene geometry",
+      "passed": true
+    },
+    {
+      "name": "body appearance uses in-memory procedural materials without external images",
+      "passed": true
+    },
+    {
+      "name": "star field and Sun illumination are present",
+      "passed": true
+    },
+    {
+      "name": "renderer caps pixel ratio and handles resize/disposal",
+      "passed": true
+    },
+    {
+      "name": "scene disposal releases geometry/material resources",
+      "passed": true
+    },
+    {
+      "name": "UI mounts OrbitControls, raycasting, focus, and keyboard reset",
+      "passed": true
+    },
+    {
+      "name": "UI includes complete controls, selectors, visibility toggles, and reset actions",
+      "passed": true
+    },
+    {
+      "name": "detail panel separates real and rendered values and moon selection",
+      "passed": true
+    },
+    {
+      "name": "screen labels show Korean and English names with selected-system moon behavior",
+      "passed": true
+    },
+    {
+      "name": "browser entry and visible scale disclaimer are wired",
+      "passed": true
+    },
+    {
+      "name": "responsive CSS covers mobile layout without horizontal overflow",
+      "passed": true
+    },
+    {
+      "name": "README documents data provenance, formulas, execution, and moon selection",
+      "passed": true
+    },
+    {
+      "name": "main exposes stable lifecycle and scale-control bootstrap methods",
+      "passed": true
+    }
+  ],
+  "passed": 31,
+  "failed": 0
+}

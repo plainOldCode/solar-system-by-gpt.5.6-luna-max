@@ -1,0 +1,1112 @@
+{
+  "generatedAt": "2026-08-15T06:40:00.209Z",
+  "sourceHead": "be82344da0b133b666da9ed049c1027b09f82b20",
+  "baseUrl": "http://127.0.0.1:5173/",
+  "browserVersion": "151.0.7922.138",
+  "executablePath": "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome",
+  "checks": [
+    {
+      "name": "bootstrap mounted one solar UI root",
+      "passed": true
+    },
+    {
+      "name": "scene canvas is mounted",
+      "passed": true
+    },
+    {
+      "name": "browser globals and mounted marker are available",
+      "passed": true,
+      "details": {
+        "mounted": "mounted",
+        "hasWindowApplication": true,
+        "hasWindowUI": true,
+        "canvasRect": {
+          "width": 1280,
+          "height": 800
+        },
+        "totalLabels": 35
+      }
+    },
+    {
+      "name": "Sun through Pluto labels are visible in the complete Solar System view",
+      "passed": true,
+      "details": {
+        "requiredVisibleBodyIds": [
+          "sun",
+          "mercury",
+          "venus",
+          "earth",
+          "mars",
+          "jupiter",
+          "saturn",
+          "uranus",
+          "neptune",
+          "pluto"
+        ],
+        "initialLabels": [
+          {
+            "bodyId": "sun",
+            "text": "태양Sun"
+          },
+          {
+            "bodyId": "mercury",
+            "text": "수성Mercury"
+          },
+          {
+            "bodyId": "venus",
+            "text": "금성Venus"
+          },
+          {
+            "bodyId": "earth",
+            "text": "지구Earth"
+          },
+          {
+            "bodyId": "mars",
+            "text": "화성Mars"
+          },
+          {
+            "bodyId": "jupiter",
+            "text": "목성Jupiter"
+          },
+          {
+            "bodyId": "saturn",
+            "text": "토성Saturn"
+          },
+          {
+            "bodyId": "uranus",
+            "text": "천왕성Uranus"
+          },
+          {
+            "bodyId": "neptune",
+            "text": "해왕성Neptune"
+          },
+          {
+            "bodyId": "pluto",
+            "text": "명왕성Pluto"
+          }
+        ]
+      }
+    },
+    {
+      "name": "required UI control exists: Play",
+      "passed": true
+    },
+    {
+      "name": "required UI control exists: Pause",
+      "passed": true
+    },
+    {
+      "name": "required UI control exists: Complete view",
+      "passed": true
+    },
+    {
+      "name": "required UI control exists: Reset time",
+      "passed": true
+    },
+    {
+      "name": "required UI control exists: Distance scale",
+      "passed": true
+    },
+    {
+      "name": "required UI control exists: Body size",
+      "passed": true
+    },
+    {
+      "name": "required UI control exists: Orbit lines",
+      "passed": true
+    },
+    {
+      "name": "required UI control exists: Labels",
+      "passed": true
+    },
+    {
+      "name": "required UI control exists: Moons",
+      "passed": true
+    },
+    {
+      "name": "required UI control exists: Moon orbits",
+      "passed": true
+    },
+    {
+      "name": "required UI control exists: Star field",
+      "passed": true
+    },
+    {
+      "name": "OrbitControls left-drag changes camera position",
+      "passed": true,
+      "details": {
+        "orbitDistance": 99.98443260237435,
+        "before": [
+          0,
+          148,
+          251.99999999999997
+        ],
+        "after": [
+          -77.92342355488232,
+          191.30711004448605,
+          206.7305727460582
+        ]
+      }
+    },
+    {
+      "name": "Complete view resets selection",
+      "passed": true
+    },
+    {
+      "name": "Earth projects into the camera depth range",
+      "passed": true,
+      "details": {
+        "x": 511.9834293217079,
+        "y": 477.1715017718801,
+        "ndcZ": 0.9993977156787666
+      }
+    },
+    {
+      "name": "hover tooltip exposes Korean/English body identity and type",
+      "passed": true,
+      "details": {
+        "hidden": false,
+        "text": "지구EarthPlanet · 행성"
+      }
+    },
+    {
+      "name": "Raycaster pointer click selects Earth",
+      "passed": true,
+      "details": {
+        "point": {
+          "x": 511.9834293217079,
+          "y": 477.1715017718801,
+          "ndcZ": 0.9993977156787666
+        },
+        "state": {
+          "selectedBodyId": "earth",
+          "distanceScaleMode": "log",
+          "sizeScaleMode": "enhanced-visibility",
+          "orbitVisibility": true,
+          "moonVisibility": true,
+          "moonOrbitVisibility": false,
+          "starFieldVisibility": true,
+          "elapsedSimulationDays": 1272.2022749999996,
+          "timeScaleDaysPerSecond": 365.25,
+          "isPlaying": false,
+          "cameraPosition": [
+            -3.710344858091386,
+            149.4684045940923,
+            250.33692071411133
+          ]
+        }
+      }
+    },
+    {
+      "name": "camera focus transition moves during its interval",
+      "passed": true,
+      "details": {
+        "focusStartToMiddle": 8.531954738435577,
+        "focusMiddleToEnd": 237.31042253151278
+      }
+    },
+    {
+      "name": "camera focus transition continues beyond the first sample",
+      "passed": true,
+      "details": {
+        "focusStartToMiddle": 8.531954738435577,
+        "focusMiddleToEnd": 237.31042253151278
+      }
+    },
+    {
+      "name": "detail panel contains 지구 · Earth",
+      "passed": true,
+      "details": {
+        "excerpt": "OBJECT INSPECTOR\n\n지구 · Earth\nPLANET · 행성\n×\n\nThe reference terrestrial planet with one major moon.\n\nREAL ASTRONOMICAL DATA\nActual radius\n6,371 km\nMean distance\n1 AU from the Sun\nOrbital period\n365.256 days\nRotation period\n23.935 hours\nOrbital eccentricity\n0.0167\nOrbital inclination\n0°\nCURRENT RENDERED VIEW\nRendered orbital radius\n48.59 units\nDistance representation\nLog Scale · logarithmic\nRendered body radius\n1.2 units\nSize representation\nEnhanced Visibility\nSimulation elapsed\n1,272.2 days\nMAJOR MOONS IN THIS SYSTEM\n달\nMoon"
+      }
+    },
+    {
+      "name": "detail panel contains REAL ASTRONOMICAL DATA",
+      "passed": true,
+      "details": {
+        "excerpt": "OBJECT INSPECTOR\n\n지구 · Earth\nPLANET · 행성\n×\n\nThe reference terrestrial planet with one major moon.\n\nREAL ASTRONOMICAL DATA\nActual radius\n6,371 km\nMean distance\n1 AU from the Sun\nOrbital period\n365.256 days\nRotation period\n23.935 hours\nOrbital eccentricity\n0.0167\nOrbital inclination\n0°\nCURRENT RENDERED VIEW\nRendered orbital radius\n48.59 units\nDistance representation\nLog Scale · logarithmic\nRendered body radius\n1.2 units\nSize representation\nEnhanced Visibility\nSimulation elapsed\n1,272.2 days\nMAJOR MOONS IN THIS SYSTEM\n달\nMoon"
+      }
+    },
+    {
+      "name": "detail panel contains Actual radius",
+      "passed": true,
+      "details": {
+        "excerpt": "OBJECT INSPECTOR\n\n지구 · Earth\nPLANET · 행성\n×\n\nThe reference terrestrial planet with one major moon.\n\nREAL ASTRONOMICAL DATA\nActual radius\n6,371 km\nMean distance\n1 AU from the Sun\nOrbital period\n365.256 days\nRotation period\n23.935 hours\nOrbital eccentricity\n0.0167\nOrbital inclination\n0°\nCURRENT RENDERED VIEW\nRendered orbital radius\n48.59 units\nDistance representation\nLog Scale · logarithmic\nRendered body radius\n1.2 units\nSize representation\nEnhanced Visibility\nSimulation elapsed\n1,272.2 days\nMAJOR MOONS IN THIS SYSTEM\n달\nMoon"
+      }
+    },
+    {
+      "name": "detail panel contains Mean distance",
+      "passed": true,
+      "details": {
+        "excerpt": "OBJECT INSPECTOR\n\n지구 · Earth\nPLANET · 행성\n×\n\nThe reference terrestrial planet with one major moon.\n\nREAL ASTRONOMICAL DATA\nActual radius\n6,371 km\nMean distance\n1 AU from the Sun\nOrbital period\n365.256 days\nRotation period\n23.935 hours\nOrbital eccentricity\n0.0167\nOrbital inclination\n0°\nCURRENT RENDERED VIEW\nRendered orbital radius\n48.59 units\nDistance representation\nLog Scale · logarithmic\nRendered body radius\n1.2 units\nSize representation\nEnhanced Visibility\nSimulation elapsed\n1,272.2 days\nMAJOR MOONS IN THIS SYSTEM\n달\nMoon"
+      }
+    },
+    {
+      "name": "detail panel contains Orbital period",
+      "passed": true,
+      "details": {
+        "excerpt": "OBJECT INSPECTOR\n\n지구 · Earth\nPLANET · 행성\n×\n\nThe reference terrestrial planet with one major moon.\n\nREAL ASTRONOMICAL DATA\nActual radius\n6,371 km\nMean distance\n1 AU from the Sun\nOrbital period\n365.256 days\nRotation period\n23.935 hours\nOrbital eccentricity\n0.0167\nOrbital inclination\n0°\nCURRENT RENDERED VIEW\nRendered orbital radius\n48.59 units\nDistance representation\nLog Scale · logarithmic\nRendered body radius\n1.2 units\nSize representation\nEnhanced Visibility\nSimulation elapsed\n1,272.2 days\nMAJOR MOONS IN THIS SYSTEM\n달\nMoon"
+      }
+    },
+    {
+      "name": "detail panel contains Rotation period",
+      "passed": true,
+      "details": {
+        "excerpt": "OBJECT INSPECTOR\n\n지구 · Earth\nPLANET · 행성\n×\n\nThe reference terrestrial planet with one major moon.\n\nREAL ASTRONOMICAL DATA\nActual radius\n6,371 km\nMean distance\n1 AU from the Sun\nOrbital period\n365.256 days\nRotation period\n23.935 hours\nOrbital eccentricity\n0.0167\nOrbital inclination\n0°\nCURRENT RENDERED VIEW\nRendered orbital radius\n48.59 units\nDistance representation\nLog Scale · logarithmic\nRendered body radius\n1.2 units\nSize representation\nEnhanced Visibility\nSimulation elapsed\n1,272.2 days\nMAJOR MOONS IN THIS SYSTEM\n달\nMoon"
+      }
+    },
+    {
+      "name": "detail panel contains Orbital eccentricity",
+      "passed": true,
+      "details": {
+        "excerpt": "OBJECT INSPECTOR\n\n지구 · Earth\nPLANET · 행성\n×\n\nThe reference terrestrial planet with one major moon.\n\nREAL ASTRONOMICAL DATA\nActual radius\n6,371 km\nMean distance\n1 AU from the Sun\nOrbital period\n365.256 days\nRotation period\n23.935 hours\nOrbital eccentricity\n0.0167\nOrbital inclination\n0°\nCURRENT RENDERED VIEW\nRendered orbital radius\n48.59 units\nDistance representation\nLog Scale · logarithmic\nRendered body radius\n1.2 units\nSize representation\nEnhanced Visibility\nSimulation elapsed\n1,272.2 days\nMAJOR MOONS IN THIS SYSTEM\n달\nMoon"
+      }
+    },
+    {
+      "name": "detail panel contains Orbital inclination",
+      "passed": true,
+      "details": {
+        "excerpt": "OBJECT INSPECTOR\n\n지구 · Earth\nPLANET · 행성\n×\n\nThe reference terrestrial planet with one major moon.\n\nREAL ASTRONOMICAL DATA\nActual radius\n6,371 km\nMean distance\n1 AU from the Sun\nOrbital period\n365.256 days\nRotation period\n23.935 hours\nOrbital eccentricity\n0.0167\nOrbital inclination\n0°\nCURRENT RENDERED VIEW\nRendered orbital radius\n48.59 units\nDistance representation\nLog Scale · logarithmic\nRendered body radius\n1.2 units\nSize representation\nEnhanced Visibility\nSimulation elapsed\n1,272.2 days\nMAJOR MOONS IN THIS SYSTEM\n달\nMoon"
+      }
+    },
+    {
+      "name": "detail panel contains CURRENT RENDERED VIEW",
+      "passed": true,
+      "details": {
+        "excerpt": "OBJECT INSPECTOR\n\n지구 · Earth\nPLANET · 행성\n×\n\nThe reference terrestrial planet with one major moon.\n\nREAL ASTRONOMICAL DATA\nActual radius\n6,371 km\nMean distance\n1 AU from the Sun\nOrbital period\n365.256 days\nRotation period\n23.935 hours\nOrbital eccentricity\n0.0167\nOrbital inclination\n0°\nCURRENT RENDERED VIEW\nRendered orbital radius\n48.59 units\nDistance representation\nLog Scale · logarithmic\nRendered body radius\n1.2 units\nSize representation\nEnhanced Visibility\nSimulation elapsed\n1,272.2 days\nMAJOR MOONS IN THIS SYSTEM\n달\nMoon"
+      }
+    },
+    {
+      "name": "detail panel contains Rendered orbital radius",
+      "passed": true,
+      "details": {
+        "excerpt": "OBJECT INSPECTOR\n\n지구 · Earth\nPLANET · 행성\n×\n\nThe reference terrestrial planet with one major moon.\n\nREAL ASTRONOMICAL DATA\nActual radius\n6,371 km\nMean distance\n1 AU from the Sun\nOrbital period\n365.256 days\nRotation period\n23.935 hours\nOrbital eccentricity\n0.0167\nOrbital inclination\n0°\nCURRENT RENDERED VIEW\nRendered orbital radius\n48.59 units\nDistance representation\nLog Scale · logarithmic\nRendered body radius\n1.2 units\nSize representation\nEnhanced Visibility\nSimulation elapsed\n1,272.2 days\nMAJOR MOONS IN THIS SYSTEM\n달\nMoon"
+      }
+    },
+    {
+      "name": "detail panel contains Distance representation",
+      "passed": true,
+      "details": {
+        "excerpt": "OBJECT INSPECTOR\n\n지구 · Earth\nPLANET · 행성\n×\n\nThe reference terrestrial planet with one major moon.\n\nREAL ASTRONOMICAL DATA\nActual radius\n6,371 km\nMean distance\n1 AU from the Sun\nOrbital period\n365.256 days\nRotation period\n23.935 hours\nOrbital eccentricity\n0.0167\nOrbital inclination\n0°\nCURRENT RENDERED VIEW\nRendered orbital radius\n48.59 units\nDistance representation\nLog Scale · logarithmic\nRendered body radius\n1.2 units\nSize representation\nEnhanced Visibility\nSimulation elapsed\n1,272.2 days\nMAJOR MOONS IN THIS SYSTEM\n달\nMoon"
+      }
+    },
+    {
+      "name": "detail panel contains Rendered body radius",
+      "passed": true,
+      "details": {
+        "excerpt": "OBJECT INSPECTOR\n\n지구 · Earth\nPLANET · 행성\n×\n\nThe reference terrestrial planet with one major moon.\n\nREAL ASTRONOMICAL DATA\nActual radius\n6,371 km\nMean distance\n1 AU from the Sun\nOrbital period\n365.256 days\nRotation period\n23.935 hours\nOrbital eccentricity\n0.0167\nOrbital inclination\n0°\nCURRENT RENDERED VIEW\nRendered orbital radius\n48.59 units\nDistance representation\nLog Scale · logarithmic\nRendered body radius\n1.2 units\nSize representation\nEnhanced Visibility\nSimulation elapsed\n1,272.2 days\nMAJOR MOONS IN THIS SYSTEM\n달\nMoon"
+      }
+    },
+    {
+      "name": "detail panel contains Size representation",
+      "passed": true,
+      "details": {
+        "excerpt": "OBJECT INSPECTOR\n\n지구 · Earth\nPLANET · 행성\n×\n\nThe reference terrestrial planet with one major moon.\n\nREAL ASTRONOMICAL DATA\nActual radius\n6,371 km\nMean distance\n1 AU from the Sun\nOrbital period\n365.256 days\nRotation period\n23.935 hours\nOrbital eccentricity\n0.0167\nOrbital inclination\n0°\nCURRENT RENDERED VIEW\nRendered orbital radius\n48.59 units\nDistance representation\nLog Scale · logarithmic\nRendered body radius\n1.2 units\nSize representation\nEnhanced Visibility\nSimulation elapsed\n1,272.2 days\nMAJOR MOONS IN THIS SYSTEM\n달\nMoon"
+      }
+    },
+    {
+      "name": "selected Earth label is visible",
+      "passed": true,
+      "details": [
+        {
+          "bodyId": "earth",
+          "text": "지구Earth"
+        }
+      ]
+    },
+    {
+      "name": "Labels toggle hides the label layer",
+      "passed": true
+    },
+    {
+      "name": "Labels toggle restores the label layer",
+      "passed": true
+    },
+    {
+      "name": "Orbit visibility toggle updates live controller state",
+      "passed": true
+    },
+    {
+      "name": "Moon visibility toggle updates live controller state",
+      "passed": true
+    },
+    {
+      "name": "Pause control stops simulation",
+      "passed": true
+    },
+    {
+      "name": "paused simulation readout remains stable",
+      "passed": true,
+      "details": {
+        "pausedBefore": {
+          "selectedBodyId": "earth",
+          "distanceScaleMode": "log",
+          "sizeScaleMode": "enhanced-visibility",
+          "orbitVisibility": true,
+          "moonVisibility": true,
+          "moonOrbitVisibility": false,
+          "starFieldVisibility": true,
+          "elapsedSimulationDays": 1272.2022749999996,
+          "timeScaleDaysPerSecond": 365.25,
+          "isPlaying": false,
+          "cameraPosition": [
+            -24.075398379575887,
+            6.074744443876883,
+            51.69522121255337
+          ]
+        },
+        "pausedAfter": {
+          "selectedBodyId": "earth",
+          "distanceScaleMode": "log",
+          "sizeScaleMode": "enhanced-visibility",
+          "orbitVisibility": true,
+          "moonVisibility": true,
+          "moonOrbitVisibility": false,
+          "starFieldVisibility": true,
+          "elapsedSimulationDays": 1272.2022749999996,
+          "timeScaleDaysPerSecond": 365.25,
+          "isPlaying": false,
+          "cameraPosition": [
+            -24.07565466621491,
+            6.074880385861436,
+            51.69531438447383
+          ]
+        }
+      }
+    },
+    {
+      "name": "Play control resumes simulation",
+      "passed": true
+    },
+    {
+      "name": "simulation elapsed days advance while playing",
+      "passed": true,
+      "details": {
+        "pausedAfter": {
+          "selectedBodyId": "earth",
+          "distanceScaleMode": "log",
+          "sizeScaleMode": "enhanced-visibility",
+          "orbitVisibility": true,
+          "moonVisibility": true,
+          "moonOrbitVisibility": false,
+          "starFieldVisibility": true,
+          "elapsedSimulationDays": 1272.2022749999996,
+          "timeScaleDaysPerSecond": 365.25,
+          "isPlaying": false,
+          "cameraPosition": [
+            -24.07565466621491,
+            6.074880385861436,
+            51.69531438447383
+          ]
+        },
+        "playingAfter": {
+          "selectedBodyId": "earth",
+          "distanceScaleMode": "log",
+          "sizeScaleMode": "enhanced-visibility",
+          "orbitVisibility": true,
+          "moonVisibility": true,
+          "moonOrbitVisibility": false,
+          "starFieldVisibility": true,
+          "elapsedSimulationDays": 1272.4689749999995,
+          "timeScaleDaysPerSecond": 1,
+          "isPlaying": true,
+          "cameraPosition": [
+            -24.24074851941873,
+            6.07497579032194,
+            51.55079484605877
+          ]
+        }
+      }
+    },
+    {
+      "name": "Reset time control returns elapsed simulation to zero",
+      "passed": true,
+      "details": {
+        "selectedBodyId": "earth",
+        "distanceScaleMode": "log",
+        "sizeScaleMode": "enhanced-visibility",
+        "orbitVisibility": true,
+        "moonVisibility": true,
+        "moonOrbitVisibility": false,
+        "starFieldVisibility": true,
+        "elapsedSimulationDays": 0,
+        "timeScaleDaysPerSecond": 1,
+        "isPlaying": true,
+        "cameraPosition": [
+          -24.384501665962496,
+          6.074992295309097,
+          51.42372094715547
+        ]
+      }
+    },
+    {
+      "name": "scale disclaimer explains logarithmic orbital-distance compression",
+      "passed": true
+    },
+    {
+      "name": "scale disclaimer explains enhanced body sizes",
+      "passed": true
+    },
+    {
+      "name": "scale disclaimer distinguishes rendered scales",
+      "passed": true
+    },
+    {
+      "name": "distance scale selector changes to Linear Scale",
+      "passed": true
+    },
+    {
+      "name": "detail panel reports active linear distance scale",
+      "passed": true
+    },
+    {
+      "name": "distance scale selector changes to Focus Scale",
+      "passed": true
+    },
+    {
+      "name": "body-size selector changes to Uniform Markers",
+      "passed": true
+    },
+    {
+      "name": "Raycaster pointer click selects Jupiter",
+      "passed": true
+    },
+    {
+      "name": "Jupiter detail panel is shown",
+      "passed": true
+    },
+    {
+      "name": "Jupiter inspector lists Io",
+      "passed": true
+    },
+    {
+      "name": "Jupiter inspector lists Europa",
+      "passed": true
+    },
+    {
+      "name": "Jupiter inspector lists Ganymede",
+      "passed": true
+    },
+    {
+      "name": "Jupiter inspector lists Callisto",
+      "passed": true
+    },
+    {
+      "name": "Jupiter inspector exposes selectable Io item",
+      "passed": true
+    },
+    {
+      "name": "documented moon-list selection focuses Io",
+      "passed": true
+    },
+    {
+      "name": "moon detail panel shows Io real data",
+      "passed": true
+    },
+    {
+      "name": "moon inspector preserves parent-system list entry Io",
+      "passed": true
+    },
+    {
+      "name": "moon inspector preserves parent-system list entry Europa",
+      "passed": true
+    },
+    {
+      "name": "moon inspector preserves parent-system list entry Ganymede",
+      "passed": true
+    },
+    {
+      "name": "moon inspector preserves parent-system list entry Callisto",
+      "passed": true
+    },
+    {
+      "name": "selecting Io reveals sibling moon label io",
+      "passed": true
+    },
+    {
+      "name": "selecting Io reveals sibling moon label europa",
+      "passed": true
+    },
+    {
+      "name": "selecting Io reveals sibling moon label ganymede",
+      "passed": true
+    },
+    {
+      "name": "selecting Io reveals sibling moon label callisto",
+      "passed": true
+    },
+    {
+      "name": "Pluto projects into the complete-view camera depth range",
+      "passed": true,
+      "details": {
+        "x": 73.59960071404373,
+        "y": 452.76733580227324,
+        "ndcZ": 0.9993828834391854
+      }
+    },
+    {
+      "name": "Raycaster pointer click selects Pluto",
+      "passed": true
+    },
+    {
+      "name": "Pluto detail panel includes its dwarf-planet identity and Charon",
+      "passed": true,
+      "details": "OBJECT INSPECTOR 명왕성 · Pluto DWARF PLANET · 왜행성 × A dwarf planet with a notably eccentric and inclined orbit. REAL ASTRONOMICAL DATA Actual radius 1,188.3 km Mean distance 39.482 AU from the Sun Orbital period 90,560 days Rotation period 153.293 hours Orbital eccentricity 0.2488 Orbital inclination 17.16° CURRENT RENDERED VIEW Rendered orbital radius 80.67 units Distance representation Focus Scale · local system Rendered body radius 1.05 units Size representation Uniform Markers Simulation elapsed 1.8 days MAJOR MOONS IN THIS SYSTEM 카론 Charon 스틱스 Styx 닉스 Nix 케르베로스 Kerberos 히드라 Hydra"
+    },
+    {
+      "name": "browser smoke uses mobile viewport",
+      "passed": true
+    },
+    {
+      "name": "canvas resizes to mobile viewport",
+      "passed": true,
+      "details": {
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "root": {
+          "width": 390,
+          "height": 844
+        },
+        "canvas": {
+          "width": 390,
+          "height": 844
+        },
+        "cameraAspect": 0.46208530805687204,
+        "control": {
+          "left": 10,
+          "right": 380,
+          "top": 566,
+          "bottom": 834,
+          "width": 370,
+          "height": 268,
+          "clientHeight": 266,
+          "scrollHeight": 266
+        },
+        "info": {
+          "left": 10,
+          "right": 380,
+          "top": 260,
+          "bottom": 530.078125,
+          "width": 370,
+          "height": 270.078125,
+          "clientHeight": 268,
+          "scrollHeight": 539,
+          "moonListItems": 5
+        },
+        "documentScrollWidth": 390
+      }
+    },
+    {
+      "name": "camera aspect updates after mobile resize",
+      "passed": true,
+      "details": {
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "root": {
+          "width": 390,
+          "height": 844
+        },
+        "canvas": {
+          "width": 390,
+          "height": 844
+        },
+        "cameraAspect": 0.46208530805687204,
+        "control": {
+          "left": 10,
+          "right": 380,
+          "top": 566,
+          "bottom": 834,
+          "width": 370,
+          "height": 268,
+          "clientHeight": 266,
+          "scrollHeight": 266
+        },
+        "info": {
+          "left": 10,
+          "right": 380,
+          "top": 260,
+          "bottom": 530.078125,
+          "width": 370,
+          "height": 270.078125,
+          "clientHeight": 268,
+          "scrollHeight": 539,
+          "moonListItems": 5
+        },
+        "documentScrollWidth": 390
+      }
+    },
+    {
+      "name": "mobile control panel stays inside viewport",
+      "passed": true,
+      "details": {
+        "left": 10,
+        "right": 380,
+        "top": 566,
+        "bottom": 834,
+        "width": 370,
+        "height": 268,
+        "clientHeight": 266,
+        "scrollHeight": 266
+      }
+    },
+    {
+      "name": "mobile inspector stays inside viewport",
+      "passed": true,
+      "details": {
+        "left": 10,
+        "right": 380,
+        "top": 260,
+        "bottom": 530.078125,
+        "width": 370,
+        "height": 270.078125,
+        "clientHeight": 268,
+        "scrollHeight": 539,
+        "moonListItems": 5
+      }
+    },
+    {
+      "name": "mobile inspector content remains available through panel scrolling",
+      "passed": true,
+      "details": {
+        "left": 10,
+        "right": 380,
+        "top": 260,
+        "bottom": 530.078125,
+        "width": 370,
+        "height": 270.078125,
+        "clientHeight": 268,
+        "scrollHeight": 539,
+        "moonListItems": 5
+      }
+    },
+    {
+      "name": "mobile layout does not create horizontal page overflow",
+      "passed": true,
+      "details": {
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "root": {
+          "width": 390,
+          "height": 844
+        },
+        "canvas": {
+          "width": 390,
+          "height": 844
+        },
+        "cameraAspect": 0.46208530805687204,
+        "control": {
+          "left": 10,
+          "right": 380,
+          "top": 566,
+          "bottom": 834,
+          "width": 370,
+          "height": 268,
+          "clientHeight": 266,
+          "scrollHeight": 266
+        },
+        "info": {
+          "left": 10,
+          "right": 380,
+          "top": 260,
+          "bottom": 530.078125,
+          "width": 370,
+          "height": 270.078125,
+          "clientHeight": 268,
+          "scrollHeight": 539,
+          "moonListItems": 5
+        },
+        "documentScrollWidth": 390
+      }
+    },
+    {
+      "name": "UI and scene disposal release the mounted browser resources",
+      "passed": true,
+      "details": {
+        "hasSolarUI": false,
+        "canvasCount": 0,
+        "mountedRootCount": 0
+      }
+    },
+    {
+      "name": "browser console has no error-level messages",
+      "passed": true,
+      "details": []
+    },
+    {
+      "name": "browser pageerror stream is empty",
+      "passed": true,
+      "details": []
+    },
+    {
+      "name": "browser request failure stream is empty",
+      "passed": true,
+      "details": []
+    }
+  ],
+  "observations": {
+    "bootstrap": {
+      "mounted": "mounted",
+      "hasWindowApplication": true,
+      "hasWindowUI": true,
+      "canvasRect": {
+        "width": 1280,
+        "height": 800
+      },
+      "totalLabels": 35
+    },
+    "initialLabels": [
+      {
+        "bodyId": "sun",
+        "text": "태양Sun"
+      },
+      {
+        "bodyId": "mercury",
+        "text": "수성Mercury"
+      },
+      {
+        "bodyId": "venus",
+        "text": "금성Venus"
+      },
+      {
+        "bodyId": "earth",
+        "text": "지구Earth"
+      },
+      {
+        "bodyId": "mars",
+        "text": "화성Mars"
+      },
+      {
+        "bodyId": "jupiter",
+        "text": "목성Jupiter"
+      },
+      {
+        "bodyId": "saturn",
+        "text": "토성Saturn"
+      },
+      {
+        "bodyId": "uranus",
+        "text": "천왕성Uranus"
+      },
+      {
+        "bodyId": "neptune",
+        "text": "해왕성Neptune"
+      },
+      {
+        "bodyId": "pluto",
+        "text": "명왕성Pluto"
+      }
+    ],
+    "screenshots": {
+      "desktop": "/Users/miniadmin/Desktop/threejs-solar-system/evidence/final-acceptance-desktop.png",
+      "mobile": "/Users/miniadmin/Desktop/threejs-solar-system/evidence/final-acceptance-mobile.png"
+    },
+    "orbitControls": {
+      "orbitDistance": 99.98443260237435,
+      "before": [
+        0,
+        148,
+        251.99999999999997
+      ],
+      "after": [
+        -77.92342355488232,
+        191.30711004448605,
+        206.7305727460582
+      ]
+    },
+    "smoothCameraFocus": {
+      "focusStartToMiddle": 8.531954738435577,
+      "focusMiddleToEnd": 237.31042253151278,
+      "focusStart": [
+        -3.710344858091386,
+        149.4684045940923,
+        250.33692071411133
+      ],
+      "focusMiddle": [
+        -4.315768986670246,
+        144.4379424299782,
+        243.4723621923516
+      ],
+      "focusEnd": [
+        -24.063463894029802,
+        6.068412808552762,
+        51.69087596316302
+      ]
+    },
+    "detailPanel": "OBJECT INSPECTOR 지구 · Earth PLANET · 행성 × The reference terrestrial planet with one major moon. REAL ASTRONOMICAL DATA Actual radius 6,371 km Mean distance 1 AU from the Sun Orbital period 365.256 days Rotation period 23.935 hours Orbital eccentricity 0.0167 Orbital inclination 0° CURRENT RENDERED VIEW Rendered orbital radius 48.59 units Distance representation Log Scale · logarithmic Rendered body radius 1.2 units Size representation Enhanced Visibility Simulation elapsed 1,272.2 days MAJOR MOONS IN THIS SYSTEM 달 Moon",
+    "labelsAfterEarth": [
+      {
+        "bodyId": "venus",
+        "text": "금성Venus"
+      },
+      {
+        "bodyId": "earth",
+        "text": "지구Earth"
+      },
+      {
+        "bodyId": "mars",
+        "text": "화성Mars"
+      },
+      {
+        "bodyId": "saturn",
+        "text": "토성Saturn"
+      },
+      {
+        "bodyId": "moon",
+        "text": "달Moon"
+      }
+    ],
+    "visibilityToggles": {
+      "selectedBodyId": "earth",
+      "distanceScaleMode": "log",
+      "sizeScaleMode": "enhanced-visibility",
+      "orbitVisibility": true,
+      "moonVisibility": true,
+      "moonOrbitVisibility": false,
+      "starFieldVisibility": true,
+      "elapsedSimulationDays": 1272.2022749999996,
+      "timeScaleDaysPerSecond": 365.25,
+      "isPlaying": false,
+      "cameraPosition": [
+        -24.074920202442186,
+        6.074490801663829,
+        51.695047357555815
+      ]
+    },
+    "simulationControls": {
+      "pausedBefore": {
+        "selectedBodyId": "earth",
+        "distanceScaleMode": "log",
+        "sizeScaleMode": "enhanced-visibility",
+        "orbitVisibility": true,
+        "moonVisibility": true,
+        "moonOrbitVisibility": false,
+        "starFieldVisibility": true,
+        "elapsedSimulationDays": 1272.2022749999996,
+        "timeScaleDaysPerSecond": 365.25,
+        "isPlaying": false,
+        "cameraPosition": [
+          -24.075398379575887,
+          6.074744443876883,
+          51.69522121255337
+        ]
+      },
+      "pausedAfter": {
+        "selectedBodyId": "earth",
+        "distanceScaleMode": "log",
+        "sizeScaleMode": "enhanced-visibility",
+        "orbitVisibility": true,
+        "moonVisibility": true,
+        "moonOrbitVisibility": false,
+        "starFieldVisibility": true,
+        "elapsedSimulationDays": 1272.2022749999996,
+        "timeScaleDaysPerSecond": 365.25,
+        "isPlaying": false,
+        "cameraPosition": [
+          -24.07565466621491,
+          6.074880385861436,
+          51.69531438447383
+        ]
+      },
+      "playingAfter": {
+        "selectedBodyId": "earth",
+        "distanceScaleMode": "log",
+        "sizeScaleMode": "enhanced-visibility",
+        "orbitVisibility": true,
+        "moonVisibility": true,
+        "moonOrbitVisibility": false,
+        "starFieldVisibility": true,
+        "elapsedSimulationDays": 1272.4689749999995,
+        "timeScaleDaysPerSecond": 1,
+        "isPlaying": true,
+        "cameraPosition": [
+          -24.24074851941873,
+          6.07497579032194,
+          51.55079484605877
+        ]
+      },
+      "resetTime": {
+        "selectedBodyId": "earth",
+        "distanceScaleMode": "log",
+        "sizeScaleMode": "enhanced-visibility",
+        "orbitVisibility": true,
+        "moonVisibility": true,
+        "moonOrbitVisibility": false,
+        "starFieldVisibility": true,
+        "elapsedSimulationDays": 0,
+        "timeScaleDaysPerSecond": 1,
+        "isPlaying": true,
+        "cameraPosition": [
+          -24.384501665962496,
+          6.074992295309097,
+          51.42372094715547
+        ]
+      }
+    },
+    "scaleSelectors": {
+      "disclaimer": "DISPLAY SCALE NOTE This visualization uses real astronomical data. Orbital distances are compressed with a logarithmic scale and body sizes are visually enlarged so the complete Solar System can share one screen. Rendered body sizes and rendered orbital distances do not share one uniform physical scale.",
+      "linearState": {
+        "selectedBodyId": "earth",
+        "distanceScaleMode": "linear",
+        "sizeScaleMode": "enhanced-visibility",
+        "orbitVisibility": true,
+        "moonVisibility": true,
+        "moonOrbitVisibility": false,
+        "starFieldVisibility": true,
+        "elapsedSimulationDays": 0.08340000000000054,
+        "timeScaleDaysPerSecond": 1,
+        "isPlaying": true,
+        "cameraPosition": [
+          23.165260055011146,
+          6.074998806970369,
+          0.8898757300544773
+        ]
+      },
+      "focusScaleState": {
+        "selectedBodyId": "earth",
+        "distanceScaleMode": "focus",
+        "sizeScaleMode": "enhanced-visibility",
+        "orbitVisibility": true,
+        "moonVisibility": true,
+        "moonOrbitVisibility": false,
+        "starFieldVisibility": true,
+        "elapsedSimulationDays": 0.18330000000000019,
+        "timeScaleDaysPerSecond": 1,
+        "isPlaying": true,
+        "cameraPosition": [
+          54.87874674314748,
+          6.075013224548333,
+          -28.76019753047462
+        ]
+      },
+      "uniformState": {
+        "selectedBodyId": "earth",
+        "distanceScaleMode": "focus",
+        "sizeScaleMode": "uniform-markers",
+        "orbitVisibility": true,
+        "moonVisibility": true,
+        "moonOrbitVisibility": false,
+        "starFieldVisibility": true,
+        "elapsedSimulationDays": 0.3166999999999998,
+        "timeScaleDaysPerSecond": 1,
+        "isPlaying": true,
+        "cameraPosition": [
+          54.981272021976025,
+          6.075019700680236,
+          -28.649900631770297
+        ]
+      }
+    },
+    "moonSelection": {
+      "selectedIo": {
+        "selectedBodyId": "io",
+        "distanceScaleMode": "focus",
+        "sizeScaleMode": "uniform-markers",
+        "orbitVisibility": true,
+        "moonVisibility": true,
+        "moonOrbitVisibility": false,
+        "starFieldVisibility": true,
+        "elapsedSimulationDays": 1.7666999999999995,
+        "timeScaleDaysPerSecond": 1,
+        "isPlaying": false,
+        "cameraPosition": [
+          -30.94289472809238,
+          69.34568038757969,
+          101.67722644050158
+        ]
+      },
+      "jupiterInfo": "OBJECT INSPECTOR 목성 · Jupiter PLANET · 행성 × The largest planet, represented with the four Galilean moons. REAL ASTRONOMICAL DATA Actual radius 69,911 km Mean distance 5.203 AU from the Sun Orbital period 4,332.59 days Rotation period 9.925 hours Orbital eccentricity 0.0489 Orbital inclination 1.303° CURRENT RENDERED VIEW Rendered orbital radius 73.56 units Distance representation Focus Scale · local system Rendered body radius 1.05 units Size representation Uniform Markers Simulation elapsed 1.8 days MAJOR MOONS IN THIS SYSTEM 이오 Io 유로파 Europa 가니메데 Ganymede 칼리스토 Callisto",
+      "ioInfo": "OBJECT INSPECTOR 이오 · Io MOON · 위성 × An active Galilean moon with a close-in orbit. REAL ASTRONOMICAL DATA Actual radius 1,821.6 km Mean distance 421,700 km from Jupiter Orbital period 1.769 days Rotation period 42.459 hours Orbital eccentricity 0.0041 Orbital inclination 0.036° CURRENT RENDERED VIEW Rendered orbital radius 2.63 units Distance representation Focus Scale · local system Rendered body radius 0.32 units Size representation Uniform Markers Simulation elapsed 1.8 days MAJOR MOONS IN THIS SYSTEM 이오 Io 유로파 Europa 가니메데 Ganymede 칼리스토 Callisto",
+      "visibleJupiterLabels": [
+        {
+          "bodyId": "io",
+          "text": "이오Io"
+        },
+        {
+          "bodyId": "europa",
+          "text": "유로파Europa"
+        },
+        {
+          "bodyId": "ganymede",
+          "text": "가니메데Ganymede"
+        },
+        {
+          "bodyId": "callisto",
+          "text": "칼리스토Callisto"
+        }
+      ]
+    },
+    "plutoSelection": {
+      "selectedPluto": {
+        "selectedBodyId": "pluto",
+        "distanceScaleMode": "focus",
+        "sizeScaleMode": "uniform-markers",
+        "orbitVisibility": true,
+        "moonVisibility": true,
+        "moonOrbitVisibility": false,
+        "starFieldVisibility": true,
+        "elapsedSimulationDays": 1.7666999999999995,
+        "timeScaleDaysPerSecond": 1,
+        "isPlaying": false,
+        "cameraPosition": [
+          -0.4966965781174768,
+          146.50697127920924,
+          249.6560099833691
+        ]
+      },
+      "plutoInfo": "OBJECT INSPECTOR 명왕성 · Pluto DWARF PLANET · 왜행성 × A dwarf planet with a notably eccentric and inclined orbit. REAL ASTRONOMICAL DATA Actual radius 1,188.3 km Mean distance 39.482 AU from the Sun Orbital period 90,560 days Rotation period 153.293 hours Orbital eccentricity 0.2488 Orbital inclination 17.16° CURRENT RENDERED VIEW Rendered orbital radius 80.67 units Distance representation Focus Scale · local system Rendered body radius 1.05 units Size representation Uniform Markers Simulation elapsed 1.8 days MAJOR MOONS IN THIS SYSTEM 카론 Charon 스틱스 Styx 닉스 Nix 케르베로스 Kerberos 히드라 Hydra"
+    },
+    "responsive": {
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "root": {
+        "width": 390,
+        "height": 844
+      },
+      "canvas": {
+        "width": 390,
+        "height": 844
+      },
+      "cameraAspect": 0.46208530805687204,
+      "control": {
+        "left": 10,
+        "right": 380,
+        "top": 566,
+        "bottom": 834,
+        "width": 370,
+        "height": 268,
+        "clientHeight": 266,
+        "scrollHeight": 266
+      },
+      "info": {
+        "left": 10,
+        "right": 380,
+        "top": 260,
+        "bottom": 530.078125,
+        "width": 370,
+        "height": 270.078125,
+        "clientHeight": 268,
+        "scrollHeight": 539,
+        "moonListItems": 5
+      },
+      "documentScrollWidth": 390
+    },
+    "disposal": {
+      "hasSolarUI": false,
+      "canvasCount": 0,
+      "mountedRootCount": 0
+    }
+  },
+  "consoleErrors": [],
+  "pageErrors": [],
+  "requestFailures": [],
+  "passed": 83,
+  "failed": 0
+}
