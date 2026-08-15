@@ -64,3 +64,16 @@ Acceptance: the first command must list exactly `index.html` and `evidence/task-
 
 - Vite reports the generated JavaScript chunk is larger than 500 kB after minification; this is a performance advisory, not a validation failure and is outside this task's allowed scope.
 - Browser smoke used Chromium headless-shell with SwiftShader; no console, page, request, interaction, or responsive failures were observed.
+
+## Task-root revalidation
+
+- Revalidation timestamp (UTC): `2026-08-15T06:18:46Z`.
+- Source HEAD before the revalidation-only change: `c24ce1155486d42d10d5579c9e1cd0507a2207e8`.
+- The revalidation-only source change adds an inline favicon declaration to `index.html`; this prevents the browser's automatic `/favicon.ico` 404 from being reported as a console error. No scene, simulation, rendering, data, scale, type, package, configuration, README, or test path was modified.
+- `npm run typecheck` — exit code `0`; TypeScript completed without diagnostics.
+- `npm run build` — exit code `0`; Vite 7.3.6 transformed 26 modules and emitted the application bundle. The existing >500 kB chunk advisory remained non-fatal.
+- `npm run dev -- --host 127.0.0.1` — Vite ready at `http://127.0.0.1:5173/`; an HTTP `HEAD /` probe returned `200`.
+- `node /tmp/solar-system-ui-smoke-revalidated.cjs` — exit code `0`; browser version `151.0.7922.138`; all `65` assertions passed; failed assertions `0`; console errors `0`; page errors `0`; request failures `0`.
+- The smoke matrix rechecked bootstrap, complete-view labels, OrbitControls drag, reset view, Earth/Jupiter raycast selection, smooth focus movement, real/rendered detail fields, play/pause/time scale/reset controls, distance and size selectors, scale disclaimer, documented Io selection with sibling labels, and desktop-to-`390x844` responsive bounds/overflow. The reset-time assertion sampled immediately after the click while playback remained enabled and observed `elapsedSimulationDays: 0`; subsequent frames are expected to advance the running simulation.
+- Responsive observations: root and canvas `390x844`, camera aspect `0.46208530805687204`, control panel bounds `10..380`, inspector bounds `10..380`, selected-parent moon list count `4`, inspector `scrollHeight=498` versus `clientHeight=268`, and document `scrollWidth=390`.
+- Final forbidden-path check must list only `index.html` and `evidence/task-03-ui-validation.md` in the staged diff; `git diff --cached --check` must exit `0`. Pre-existing untracked `dist/` and `node_modules/` are not staged.
