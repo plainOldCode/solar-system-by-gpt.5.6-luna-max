@@ -1,5 +1,7 @@
 # Three.js Logarithmic Solar System
 
+> Created by GPT-5.6 Luna Max on Hermes.
+
 브라우저에서 실제 천문 데이터를 탐색할 수 있는 반응형 Three.js 태양계 시각화 프로젝트다. 태양부터 명왕성까지와 주요 위성을 포함하며, 실제 물리값과 화면 표시용 거리·크기 스케일을 분리한다.
 
 ## Original implementation prompt
