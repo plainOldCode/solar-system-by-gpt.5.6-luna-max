@@ -1,0 +1,647 @@
+:root {
+  color-scheme: dark;
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background: #02040c;
+  color: #f5f7ff;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  min-width: 320px;
+  min-height: 100%;
+  margin: 0;
+  overflow: hidden;
+  background: #02040c;
+}
+
+body {
+  min-height: 100vh;
+}
+
+button,
+select,
+input {
+  font: inherit;
+}
+
+button,
+select {
+  color: inherit;
+}
+
+button:focus-visible,
+select:focus-visible,
+input:focus-visible {
+  outline: 2px solid #8ce6ff;
+  outline-offset: 2px;
+}
+
+#app.solar-ui {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  height: 100vh;
+  overflow: hidden;
+  isolation: isolate;
+  background:
+    radial-gradient(circle at 50% 50%, rgba(30, 59, 110, 0.16), transparent 42%),
+    #02040c;
+}
+
+#app.solar-ui > .solar-ui__stage {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.solar-system-canvas {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  min-height: 0 !important;
+  cursor: grab;
+}
+
+.solar-system-canvas:active {
+  cursor: grabbing;
+}
+
+.solar-label-layer {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.solar-label {
+  position: absolute;
+  display: flex;
+  min-width: max-content;
+  flex-direction: column;
+  align-items: center;
+  gap: 1px;
+  padding: 4px 7px 5px;
+  border: 1px solid rgba(195, 229, 255, 0.18);
+  border-radius: 7px;
+  background: rgba(4, 11, 26, 0.76);
+  box-shadow: 0 5px 16px rgba(0, 0, 0, 0.24);
+  color: #eaf6ff;
+  line-height: 1.1;
+  transform-origin: center bottom;
+  transition: opacity 120ms ease, border-color 120ms ease, background 120ms ease;
+  translate: -50% calc(-100% - 9px);
+  white-space: nowrap;
+}
+
+.solar-label--star {
+  border-color: rgba(255, 211, 111, 0.54);
+  background: rgba(46, 30, 8, 0.8);
+}
+
+.solar-label--moon {
+  border-color: rgba(177, 204, 227, 0.32);
+  padding: 3px 6px 4px;
+  font-size: 10px;
+}
+
+.solar-label.is-selected {
+  border-color: #82e6ff;
+  background: rgba(9, 54, 81, 0.9);
+  box-shadow: 0 0 0 1px rgba(130, 230, 255, 0.2), 0 8px 24px rgba(0, 0, 0, 0.35);
+}
+
+.solar-label.is-compact .solar-label__secondary {
+  display: none;
+}
+
+.solar-label__primary {
+  font-size: 11px;
+  font-weight: 750;
+  letter-spacing: 0.03em;
+}
+
+.solar-label__secondary {
+  color: #99acc4;
+  font-size: 9px;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+}
+
+.solar-ui__overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+  pointer-events: none;
+}
+
+.solar-ui__overlay > * {
+  pointer-events: auto;
+}
+
+.solar-header {
+  position: absolute;
+  top: 22px;
+  left: 24px;
+  max-width: min(520px, calc(100vw - 48px));
+}
+
+.solar-header__kicker,
+.panel-eyebrow {
+  margin: 0 0 6px;
+  color: #80dcf4;
+  font-size: 10px;
+  font-weight: 750;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.solar-header h1 {
+  margin: 0;
+  font-size: clamp(24px, 3vw, 42px);
+  font-weight: 760;
+  letter-spacing: -0.04em;
+  line-height: 1;
+  text-shadow: 0 4px 22px rgba(0, 0, 0, 0.52);
+}
+
+.solar-header p {
+  max-width: 460px;
+  margin: 10px 0 0;
+  color: #a5b9d2;
+  font-size: 13px;
+  line-height: 1.45;
+}
+
+.panel-surface {
+  border: 1px solid rgba(154, 197, 237, 0.18);
+  border-radius: 14px;
+  background: linear-gradient(145deg, rgba(9, 20, 42, 0.9), rgba(5, 12, 26, 0.79));
+  box-shadow: 0 22px 50px rgba(0, 0, 0, 0.28), inset 0 1px rgba(255, 255, 255, 0.045);
+  backdrop-filter: blur(18px) saturate(125%);
+}
+
+.control-panel {
+  position: absolute;
+  top: 22px;
+  right: 22px;
+  display: flex;
+  width: 282px;
+  max-height: calc(100vh - 44px);
+  flex-direction: column;
+  gap: 11px;
+  padding: 16px;
+  overflow: auto;
+  scrollbar-color: rgba(156, 201, 237, 0.36) transparent;
+}
+
+.panel-heading {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.panel-heading--compact {
+  display: block;
+}
+
+.panel-title {
+  margin: 0;
+  color: #f5f7ff;
+  font-size: 17px;
+  font-weight: 720;
+  letter-spacing: -0.02em;
+}
+
+.control-group {
+  display: flex;
+  gap: 7px;
+}
+
+.control-group--actions > *,
+.control-group--playback > * {
+  flex: 1;
+}
+
+.control-group--playback {
+  align-items: center;
+}
+
+.primary-button,
+.secondary-button,
+.icon-button {
+  border: 1px solid rgba(159, 207, 245, 0.23);
+  border-radius: 8px;
+  background: rgba(83, 123, 169, 0.16);
+  color: #d9efff;
+  cursor: pointer;
+  font-size: 11px;
+  font-weight: 680;
+  padding: 8px 9px;
+  transition: border-color 140ms ease, background 140ms ease, transform 140ms ease;
+}
+
+.primary-button:hover,
+.secondary-button:hover,
+.icon-button:hover {
+  border-color: rgba(144, 227, 255, 0.68);
+  background: rgba(77, 176, 214, 0.24);
+}
+
+.primary-button:active,
+.secondary-button:active,
+.icon-button:active {
+  transform: translateY(1px);
+}
+
+.primary-button.is-active,
+.secondary-button.is-active {
+  border-color: rgba(143, 229, 255, 0.68);
+  background: rgba(42, 152, 191, 0.35);
+  color: #fff;
+}
+
+.simulation-readout {
+  min-width: 82px;
+  color: #8da7c5;
+  font-size: 10px;
+  line-height: 1.2;
+  text-align: right;
+}
+
+.control-field {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  color: #a3b7cf;
+  font-size: 11px;
+}
+
+.control-select {
+  max-width: 152px;
+  border: 1px solid rgba(154, 198, 237, 0.23);
+  border-radius: 7px;
+  background: rgba(4, 12, 27, 0.82);
+  color: #e8f4ff;
+  cursor: pointer;
+  font-size: 10px;
+  padding: 7px 7px;
+}
+
+.control-group--toggles {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5px 8px;
+  padding-top: 3px;
+}
+
+.toggle-control {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #aabbd0;
+  cursor: pointer;
+  font-size: 10px;
+  user-select: none;
+}
+
+.toggle-control input {
+  width: 13px;
+  height: 13px;
+  margin: 0;
+  accent-color: #70d9ed;
+}
+
+.info-panel {
+  position: absolute;
+  bottom: 22px;
+  left: 22px;
+  display: flex;
+  width: 312px;
+  max-height: min(62vh, 620px);
+  flex-direction: column;
+  padding: 16px;
+  overflow: auto;
+  scrollbar-color: rgba(156, 201, 237, 0.36) transparent;
+}
+
+.info-panel.is-empty {
+  min-height: 150px;
+}
+
+.info-panel__empty,
+.info-panel__description,
+.info-section__muted {
+  margin: 12px 0 0;
+  color: #a3b8d0;
+  font-size: 11px;
+  line-height: 1.52;
+}
+
+.info-panel__description {
+  color: #c2d0e1;
+}
+
+.object-type {
+  display: block;
+  margin-top: 5px;
+  color: #7fd8ef;
+  font-size: 10px;
+  font-weight: 650;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.icon-button {
+  width: 28px;
+  height: 28px;
+  flex: 0 0 auto;
+  padding: 0;
+  font-size: 19px;
+  line-height: 1;
+}
+
+.info-section {
+  margin-top: 14px;
+}
+
+.info-section h3 {
+  margin: 0 0 7px;
+  color: #82cde4;
+  font-size: 9px;
+  font-weight: 760;
+  letter-spacing: 0.16em;
+}
+
+.info-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr);
+  gap: 8px;
+  padding: 5px 0;
+  border-bottom: 1px solid rgba(155, 192, 224, 0.09);
+  font-size: 10px;
+  line-height: 1.25;
+}
+
+.info-row dt {
+  color: #849bb6;
+}
+
+.info-row dd {
+  margin: 0;
+  color: #e0edfb;
+  text-align: right;
+}
+
+.moon-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.moon-list li {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  min-width: 72px;
+  padding: 5px 7px;
+  border: 1px solid rgba(146, 188, 223, 0.16);
+  border-radius: 7px;
+  background: rgba(92, 134, 176, 0.1);
+  cursor: pointer;
+}
+
+.moon-list li:hover {
+  border-color: rgba(126, 220, 243, 0.58);
+  background: rgba(76, 170, 207, 0.18);
+}
+
+.moon-list li:focus-visible {
+  outline: 2px solid #8ce6ff;
+  outline-offset: 2px;
+}
+
+.moon-list li span:first-child {
+  color: #d6e7f8;
+  font-size: 10px;
+  font-weight: 680;
+}
+
+.moon-list li span:last-child {
+  color: #839ab5;
+  font-size: 9px;
+}
+
+.scale-disclaimer {
+  position: absolute;
+  right: 22px;
+  bottom: 22px;
+  width: min(355px, calc(100vw - 390px));
+  padding: 11px 13px;
+  border: 1px solid rgba(126, 217, 239, 0.2);
+  border-radius: 10px;
+  background: rgba(5, 14, 30, 0.67);
+  color: #a3bad3;
+  font-size: 10px;
+  line-height: 1.45;
+  pointer-events: auto;
+}
+
+.scale-disclaimer strong {
+  display: block;
+  margin-bottom: 3px;
+  color: #d9f3ff;
+  font-size: 10px;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+}
+
+.hover-tooltip {
+  position: absolute;
+  z-index: 8;
+  display: flex;
+  min-width: 128px;
+  flex-direction: column;
+  gap: 2px;
+  padding: 8px 10px;
+  border: 1px solid rgba(151, 218, 241, 0.35);
+  border-radius: 8px;
+  background: rgba(4, 12, 27, 0.92);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.28);
+  pointer-events: none;
+  transform: translate(12px, 12px);
+}
+
+.hover-tooltip[hidden] {
+  display: none;
+}
+
+.hover-tooltip__primary {
+  color: #f4fbff;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.hover-tooltip__secondary,
+.hover-tooltip__type {
+  color: #8da6c0;
+  font-size: 9px;
+}
+
+@media (max-width: 920px) {
+  .solar-header {
+    max-width: 360px;
+  }
+
+  .solar-header p {
+    max-width: 330px;
+  }
+
+  .control-panel {
+    width: 252px;
+  }
+
+  .info-panel {
+    width: 286px;
+  }
+
+  .scale-disclaimer {
+    width: min(300px, calc(100vw - 350px));
+  }
+}
+
+@media (max-width: 680px) {
+  #app.solar-ui {
+    min-height: 100svh;
+    height: 100svh;
+  }
+
+  .solar-header {
+    top: 13px;
+    left: 14px;
+    max-width: calc(100vw - 28px);
+  }
+
+  .solar-header h1 {
+    font-size: 26px;
+  }
+
+  .solar-header p {
+    max-width: min(230px, calc(100vw - 28px));
+    margin-top: 7px;
+    font-size: 11px;
+  }
+
+  .control-panel {
+    top: auto;
+    right: 10px;
+    bottom: 10px;
+    left: 10px;
+    width: auto;
+    max-height: 45svh;
+    gap: 8px;
+    padding: 11px;
+    border-radius: 12px;
+  }
+
+  .control-panel .panel-heading {
+    display: none;
+  }
+
+  .control-group--actions,
+  .control-group--playback {
+    gap: 5px;
+  }
+
+  .control-field {
+    min-height: 28px;
+  }
+
+  .control-select {
+    max-width: 58%;
+  }
+
+  .info-panel {
+    top: 260px;
+    right: 10px;
+    bottom: auto;
+    left: 10px;
+    width: auto;
+    max-height: 32svh;
+    padding: 12px;
+    border-radius: 12px;
+  }
+
+  .info-panel.is-empty {
+    min-height: 0;
+  }
+
+  .info-panel.is-empty .panel-heading {
+    align-items: center;
+  }
+
+  .info-panel.is-empty .panel-title {
+    font-size: 14px;
+  }
+
+  .info-panel:not(.is-empty) .info-panel__description,
+  .info-panel:not(.is-empty) .info-panel__moons {
+    display: none;
+  }
+
+  .scale-disclaimer {
+    top: clamp(136px, 18svh, 160px);
+    right: 10px;
+    bottom: auto;
+    left: 10px;
+    width: auto;
+    max-height: none;
+    overflow: visible;
+    padding: 8px 9px;
+    font-size: 9px;
+  }
+
+  .scale-disclaimer strong {
+    font-size: 9px;
+  }
+
+  .solar-label {
+    padding: 3px 5px 4px;
+  }
+
+  .solar-label__primary {
+    font-size: 9px;
+  }
+
+  .solar-label__secondary {
+    font-size: 8px;
+  }
+
+  .solar-label--moon {
+    font-size: 9px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .solar-label,
+  .primary-button,
+  .secondary-button,
+  .icon-button {
+    transition: none;
+  }
+}

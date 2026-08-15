@@ -178,10 +178,26 @@ export class InfoPanel {
         continue;
       }
       const item = document.createElement('li');
-      item.innerHTML = `<span>${moon.nameKo}</span><span>${moon.nameEn}</span>`;
       item.dataset.bodyId = moon.id;
       item.title = `Focus ${moon.nameEn}`;
-      item.addEventListener('click', () => this.controller.focusBody(moon.id));
+      item.setAttribute('role', 'button');
+      item.tabIndex = 0;
+      item.setAttribute('aria-label', `Focus ${moon.nameEn}`);
+      const primary = document.createElement('span');
+      primary.textContent = moon.nameKo;
+      const secondary = document.createElement('span');
+      secondary.textContent = moon.nameEn;
+      item.append(primary, secondary);
+      const focusMoon = (): void => {
+        this.controller.focusBody(moon.id);
+      };
+      item.addEventListener('click', focusMoon);
+      item.addEventListener('keydown', (event) => {
+        if (event.key === 'Enter' || event.key === ' ') {
+          event.preventDefault();
+          focusMoon();
+        }
+      });
       list.append(item);
     }
     section.append(list);

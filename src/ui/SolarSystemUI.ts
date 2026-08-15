@@ -182,6 +182,7 @@ export class SolarSystemUI {
     this.controlPanel.dispose();
     this.infoPanel.dispose();
     this.overlay.remove();
+    this.stage.remove();
     this.element.classList.remove('solar-ui');
     if (this.ownsApplication) {
       this.application.dispose();
@@ -328,10 +329,15 @@ export class SolarSystemUI {
       -((event.clientY - bounds.top) / bounds.height) * 2 + 1,
     );
     this.raycaster.setFromCamera(this.pointer, this.controller.camera);
+    const state = this.controller.getState();
     const targets = Array.from(this.controller.getSelectionTargets());
     const hit = this.raycaster.intersectObjects(targets, false).find((intersection) => intersection.object.visible);
     const bodyId = hit?.object.userData.celestialBodyId;
-    return typeof bodyId === 'string' ? bodyId : null;
+    if (typeof bodyId !== 'string') {
+      return null;
+    }
+    const body = this.controller.getBodyData(bodyId);
+    return body?.type === 'moon' && !state.moonVisibility ? null : bodyId;
   }
 
   private updateTooltip(bodyId: string | null, event: Pick<MouseEvent, 'clientX' | 'clientY'>): void {

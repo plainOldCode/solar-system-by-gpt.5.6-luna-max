@@ -65,11 +65,12 @@ export class CelestialLabels {
     const rect = this.controller.renderer.domElement.getBoundingClientRect();
     const width = rect.width || this.controller.renderer.domElement.clientWidth;
     const height = rect.height || this.controller.renderer.domElement.clientHeight;
+    const compact = width < 620 || this.controller.camera.position.lengthSq() > 340 * 340;
 
     for (const entry of this.entries.values()) {
       const isMoon = entry.body.type === 'moon';
       const isSelectedSystemMoon = isMoon && entry.body.parentId === selectedSystemId;
-      const shouldShow = !isMoon || isSelectedSystemMoon;
+      const shouldShow = !isMoon || (state.moonVisibility && isSelectedSystemMoon);
       if (!shouldShow || width <= 0 || height <= 0) {
         entry.element.hidden = true;
         continue;
@@ -92,6 +93,10 @@ export class CelestialLabels {
 
       entry.element.hidden = false;
       entry.element.classList.toggle('is-selected', entry.body.id === state.selectedBodyId);
+      entry.element.classList.toggle(
+        'is-compact',
+        compact && entry.body.id !== state.selectedBodyId,
+      );
       entry.element.style.transform = `translate3d(${x}px, ${y}px, 0)`;
       entry.element.style.opacity = isSelectedSystemMoon ? '1' : '0.86';
     }
