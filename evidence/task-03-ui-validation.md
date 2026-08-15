@@ -1,73 +1,66 @@
-# Task 03 UI/integration validation
+# Task 03 UI validation evidence
 
-Date of validation: 2026-08-15T05:32:56Z (UTC)
-Workspace: `/Users/miniadmin/Desktop/threejs-solar-system`
+- Task: `t_c80c9b0a`
+- Workspace: `/Users/miniadmin/Desktop/threejs-solar-system`
+- Validation timestamp (UTC): `2026-08-15T06:10:57Z`
+- Validation source HEAD before this task commit: `5290eb15098817f7b9811ca46ff06551a44c784a`
+- Branch: `main`
 
-## Scope
+## Scope and bootstrap follow-up
 
-Owned implementation paths are `src/ui/**`, `src/styles/**`, and this evidence file. The UI hardening keeps the existing `SolarSystemUI`/controller-adapter boundary and does not modify tests, package or lock files, configuration, data, scales, types, scene/core, simulation, rendering, `src/main.ts`, or README paths. Local `node_modules/` and `dist/` directories produced by validation are not task artifacts and are not staged.
+The upstream UI implementation was exported but the browser document did not invoke it. Before the follow-up, `curl http://127.0.0.1:5173/` returned the static scaffold and the initial Vite build transformed only one module. The task-scoped public-entry fix adds this module script to `index.html`:
 
-## Commands and exit codes
+```html
+<script type="module" src="/src/ui/index.ts" data-solar-system-ui></script>
+```
 
-| Command / probe | Exit/result |
-| --- | ---: |
-| `npm install` | 0; dependencies already up to date, 18 packages audited, 0 vulnerabilities reported; npm printed the existing install-script approval warning for `esbuild`/`fsevents` |
-| `npm run typecheck` | 0; TypeScript completed with no diagnostics |
-| `npm run build` | 0; TypeScript check and Vite 7.3.6 production build completed |
-| `npx esbuild src/ui/index.ts --bundle --platform=browser --format=esm --outfile=/tmp/solar-ui-bundle.js` | 0; browser UI bundle and imported stylesheet produced successfully (`/tmp/solar-ui-bundle.js`, plus the emitted CSS file) |
-| `npm run dev -- --host 127.0.0.1` | Started successfully; Vite reported ready in 62 ms at `http://127.0.0.1:5173/` |
-| `node /tmp/solar-system-smoke.mjs` | 0; Playwright 1.62.1 with installed Chromium exercised the UI in a fresh browser session; all assertions passed |
-| `git diff --check` | 0 |
+No change was made to `src/main.ts`; the existing exported `solarSystemApp` is consumed by the UI entry. After the fix, the browser mounted one `.solar-ui` root, one scene canvas, `window.solarSystemApp`, and `window.solarSystemUI`.
 
-The browser smoke run used headless Chromium with SwiftShader-compatible launch flags and recorded zero console errors, page errors, or failed requests. The temporary smoke script is outside the repository and was not staged.
+## Canonical project checks
 
-## Re-verification run
+Commands were run from the repository root on the final source tree:
 
-Re-verified from `HEAD 7a48262bb58577f72e9e03aa7bc178c21cac1d1c` at `2026-08-15T05:37:21Z` (UTC). The tracked worktree was clean before and after validation; local `dist/` and `node_modules/` remain untracked validation outputs.
+| Command | Exit code | Result |
+|---|---:|---|
+| `npm run typecheck` | 0 | TypeScript check passed with no diagnostics. |
+| `npm run build` | 0 | Vite build passed; 26 modules transformed; emitted `dist/index.html`, CSS, and JS assets. Vite printed only the existing >500 kB chunk-size advisory. |
+| `npm run dev -- --host 127.0.0.1` | running/ready | Vite reported `http://127.0.0.1:5173/`. The process was used for the browser smoke run. |
+| `node /tmp/solar-system-ui-smoke.cjs` | 0 | 65 browser assertions passed; 0 failed. |
 
-| Command / probe | Exit/result |
-| --- | ---: |
-| `npm run typecheck` | 0; TypeScript completed with no diagnostics |
-| `npm run build` | 0; TypeScript check and Vite 7.3.6 production build completed (`dist/index.html`, 0.77 kB) |
-| `npm run dev -- --host 127.0.0.1` | Started successfully; Vite reported ready in 61 ms at `http://127.0.0.1:5173/`; HTTP `HEAD /` returned 200; server stopped after smoke validation |
-| `node /tmp/solar-system-smoke.mjs` | 0; all 15 browser assertions passed with zero console errors, page errors, or request failures |
-| `git diff --check HEAD` | 0 |
-| `git diff-tree --check -r HEAD` | 0 |
-| forbidden-path check against `HEAD` | 0; all committed paths are task-owned |
-| `git status --short --untracked-files=no` | 0; no tracked modifications |
+The temporary smoke harness used Playwright `1.55.1` with the locally installed Chromium headless shell, browser version `151.0.7922.34`. It was not added to the repository.
 
-Fresh smoke observations: the default state mounted a canvas with `log`/`enhanced-visibility` scales and 10 visible primary labels; play/pause, distance and size selectors, Earth raycast selection, hover tooltip, Moon keyboard focus, OrbitControls drag/zoom, moon/label visibility, complete-view reset, and the 390×844 responsive layout all passed. The current smoke screenshots were written to `/tmp/solar-ui-default.png`, `/tmp/solar-ui-mobile.png`, and `/tmp/solar-ui-desktop.png` outside the repository.
+## Browser smoke observations
 
-## Browser smoke assertions
+All 65 checks passed. The check matrix covered:
 
-The fresh browser session verified:
+- Bootstrap: one mounted UI root and canvas; `window.solarSystemApp` and `window.solarSystemUI` available.
+- Complete-view labels: 10 visible labels, including the Sun, all major planets, and Pluto.
+- OrbitControls: left-drag changed camera position by `111.72039314476048` units.
+- Reset: Complete view cleared selection.
+- Raycast selection: projected pointer click selected Earth, then Jupiter.
+- Smooth camera focus: after Earth selection, camera movement was observed in both samples (`3.5253210955645855` units from start to middle and `314.4510451786533` units from middle to settled sample), rather than jumping in one step.
+- Earth detail panel: contained Korean/English name, object type, description, REAL ASTRONOMICAL DATA, actual radius, mean distance, orbital period, rotation period, eccentricity, inclination, CURRENT RENDERED VIEW, rendered orbital radius/radius, active distance scale, and active size scale.
+- Focused labels: Earth and its focused local moon system labels remained visible.
+- Simulation controls: Pause stopped elapsed-time changes; Play resumed them; the 1 day/second preset applied; Reset time returned elapsed simulation to `0` days.
+- Scale controls: disclaimer explained logarithmic orbital-distance compression, enhanced body sizes, and the non-uniform physical/rendered scales. Linear Scale, Focus Scale, and Uniform Markers selector changes were reflected in live controller state and panel text.
+- Documented moon behavior: Jupiter inspector listed Io, Europa, Ganymede, and Callisto. Selecting the Io moon-list item selected/focused Io, preserved the parent-system moon list, and showed sibling labels for all four Galilean moons.
+- Responsive resize: at `390x844`, root and canvas were `390x844`, camera aspect was `0.46208530805687204` (390/844), control panel bounds were `10..380` horizontally, inspector bounds were `10..380`, the inspector retained 4 moon items, its content remained scrollable (`scrollHeight=498`, `clientHeight=268`), and document `scrollWidth` stayed `390`.
+- Runtime health: console error messages `0`; page errors `0`; failed requests `0`.
 
-- Canvas and UI mount successfully; the default state has no selected body, `log` distance scale, `enhanced-visibility` body-size scale, visible orbit/moon/star-field layers, and 10 visible primary labels out of 35 label nodes.
-- Play/pause controls change `isPlaying` to `false`/`true` as expected, and the time-scale selector remains functional.
-- Distance and body-size selectors change to `linear` and `uniform-markers` respectively.
-- Hovering the projected Earth produces a visible `Planet · 행성` tooltip; clicking it selects Earth and fills the inspector with both real astronomical fields (including actual radius) and rendered-view fields (including rendered body radius).
-- The Moon entry in the inspector is keyboard-accessible (`role="button"`, `Enter` activation) and selects the Moon. OrbitControls drag changed the camera position from `(-10.8455, 6.3351, 18.5230)` to `(-16.9376, 1.2891, 19.1984)` in the same run.
-- Turning Moons off sets `moonVisibility=false` and hides the Moon label; turning Labels off hides the label layer. Complete view resets selection to `null`.
-- At `390x844`, the control panel is `[x=10, y=566, w=370, h=268]`, the inspector is `[x=10, y=260, w=370, h=270.08]`, and the scale disclaimer is `[x=10, y=151.91, w=370, h=86.23]`. The panels are separated, the full disclaimer fits without internal clipping, and there is no horizontal overflow.
+## Git-based forbidden-path check
 
-Fresh screenshots `/tmp/solar-ui-default.png` and `/tmp/solar-ui-mobile.png` were visually inspected. The default composition keeps the Sun through Pluto visible with readable labels and separated desktop panels; the selected-body mobile layout keeps the header, full scale disclaimer, inspector, and bottom control surface readable without overlap.
+The task-scoped change set was checked with Git before commit. The intended tracked paths are `index.html` and `evidence/task-03-ui-validation.md`; no scene, simulation, data, dependency, or generated-output path is allowed in the commit. `dist/` and `node_modules/` were pre-existing untracked local validation outputs and were deliberately not staged.
 
-## UI hardening observations
+Commands used for the final staged check:
 
-- Moon list rows now use text nodes instead of interpolated `innerHTML`, expose an accessible button role/name, and support click, Enter, and Space activation.
-- Raycast selection ignores moons while Moon visibility is disabled, preventing hidden moon meshes from remaining clickable.
-- Label updates honor Moon visibility and apply a compact secondary-label treatment on narrow viewports or distant cameras while preserving the selected body's label.
-- `SolarSystemUI.dispose()` removes the stage container in addition to the overlay and controller/application resources.
-- Mobile CSS separates the inspector and scale disclaimer, keeps the disclaimer text fully visible, prevents horizontal overflow, and corrects the moon-section selector so the intended compact mobile inspector behavior applies.
+```text
+git diff --cached --name-only
+git diff --cached --check
+```
 
-## Forbidden-path check
+Acceptance: the first command must list exactly `index.html` and `evidence/task-03-ui-validation.md`; the second must return exit code `0`. The commit was created only after this path/syntax check. The full 40-character commit hash is included in the Kanban handoff.
 
-The task-scoped change is limited to:
+## Remaining risks
 
-- `src/ui/InfoPanel.ts`
-- `src/ui/SolarSystemUI.ts`
-- `src/ui/labels.ts`
-- `src/styles/solar-system.css`
-- `evidence/task-03-ui-validation.md`
-
-No files under tests, package/lock/config, data, scales, types, scene/core, simulation, rendering, `src/main.ts`, or README are part of this task change. `node_modules/` and `dist/` remain local validation outputs and are not staged.
+- Vite reports the generated JavaScript chunk is larger than 500 kB after minification; this is a performance advisory, not a validation failure and is outside this task's allowed scope.
+- Browser smoke used Chromium headless-shell with SwiftShader; no console, page, request, interaction, or responsive failures were observed.
