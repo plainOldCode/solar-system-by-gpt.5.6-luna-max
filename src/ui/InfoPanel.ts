@@ -1,6 +1,8 @@
 import type { CelestialBodyData, RenderedBodyMetrics } from '../types/astronomy';
 import type { SceneControllerState, SolarSystemUIController } from './controllerAdapter';
 
+const SIMULATION_DAYS_FORMATTER = new Intl.NumberFormat('en-US', { maximumFractionDigits: 1 });
+
 export interface InfoPanelOptions {
   readonly onResetView: () => void;
 }
@@ -19,6 +21,7 @@ export class InfoPanel {
   private readonly moonsElement: HTMLElement;
   private readonly emptyElement: HTMLElement;
   private readonly resetButton: HTMLButtonElement;
+  private simulationValueElement: HTMLElement | undefined;
   private disposed = false;
 
   constructor(
@@ -92,6 +95,7 @@ export class InfoPanel {
       this.renderedValuesElement.hidden = true;
       this.moonsElement.hidden = true;
       this.resetButton.hidden = true;
+      this.simulationValueElement = undefined;
       return;
     }
 
@@ -131,6 +135,14 @@ export class InfoPanel {
     this.replaceMoonList(this.moonsElement, moonIds, body);
   }
 
+  /** Refresh only the elapsed-time row during animation without rebuilding the panel. */
+  updateSimulation(state: SceneControllerState): void {
+    if (this.disposed || !this.simulationValueElement) {
+      return;
+    }
+    this.simulationValueElement.textContent = `${SIMULATION_DAYS_FORMATTER.format(state.elapsedSimulationDays)} days`;
+  }
+
   dispose(): void {
     this.disposed = true;
     this.element.remove();
@@ -147,6 +159,9 @@ export class InfoPanel {
 
   private replaceRows(section: HTMLElement, rows: readonly [string, string][]): void {
     const heading = section.querySelector('h3');
+    if (section === this.renderedValuesElement) {
+      this.simulationValueElement = undefined;
+    }
     section.replaceChildren(heading ?? document.createElement('h3'));
     for (const [label, value] of rows) {
       const row = document.createElement('div');
@@ -157,6 +172,9 @@ export class InfoPanel {
       valueElement.textContent = value;
       row.append(labelElement, valueElement);
       section.append(row);
+      if (section === this.renderedValuesElement && label === 'Simulation elapsed') {
+        this.simulationValueElement = valueElement;
+      }
     }
   }
 

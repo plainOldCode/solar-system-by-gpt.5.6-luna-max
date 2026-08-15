@@ -5,6 +5,8 @@ import type {
 } from '../types/astronomy';
 import type { SceneControllerState } from './controllerAdapter';
 
+const SIMULATION_DAYS_FORMATTER = new Intl.NumberFormat('en-US', { maximumFractionDigits: 1 });
+
 export interface ControlPanelCallbacks {
   readonly onPlay: () => void;
   readonly onPause: () => void;
@@ -118,12 +120,7 @@ export class ControlPanel {
     if (this.disposed) {
       return;
     }
-    this.playButton.classList.toggle('is-active', state.isPlaying);
-    this.pauseButton.classList.toggle('is-active', !state.isPlaying);
-    this.playButton.setAttribute('aria-pressed', String(state.isPlaying));
-    this.pauseButton.setAttribute('aria-pressed', String(!state.isPlaying));
-    this.elapsedElement.textContent = `${formatNumber(state.elapsedSimulationDays, 1)} simulation days`;
-    selectValue(this.timeScaleSelect, String(state.timeScaleDaysPerSecond));
+    this.updateSimulation(state);
     this.distanceScaleSelect.value = state.distanceScaleMode;
     this.sizeScaleSelect.value = state.sizeScaleMode;
     this.orbitToggle.checked = state.orbitVisibility;
@@ -131,6 +128,19 @@ export class ControlPanel {
     this.moonToggle.checked = state.moonVisibility;
     this.moonOrbitToggle.checked = state.moonOrbitVisibility;
     this.starToggle.checked = state.starFieldVisibility;
+  }
+
+  /** Keep time readouts live even though the scene controller emits on commands, not every frame. */
+  updateSimulation(state: SceneControllerState): void {
+    if (this.disposed) {
+      return;
+    }
+    this.playButton.classList.toggle('is-active', state.isPlaying);
+    this.pauseButton.classList.toggle('is-active', !state.isPlaying);
+    this.playButton.setAttribute('aria-pressed', String(state.isPlaying));
+    this.pauseButton.setAttribute('aria-pressed', String(!state.isPlaying));
+    this.elapsedElement.textContent = `${SIMULATION_DAYS_FORMATTER.format(state.elapsedSimulationDays)} simulation days`;
+    selectValue(this.timeScaleSelect, String(state.timeScaleDaysPerSecond));
   }
 
   dispose(): void {
@@ -201,8 +211,4 @@ function selectValue(select: HTMLSelectElement, value: string): void {
   if (option) {
     select.value = value;
   }
-}
-
-function formatNumber(value: number, maximumFractionDigits = 1): string {
-  return new Intl.NumberFormat('en-US', { maximumFractionDigits }).format(value);
 }

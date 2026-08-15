@@ -32,6 +32,10 @@ export interface SolarSystemUIOptions {
  * It owns DOM panels, OrbitControls, pointer raycasting, screen labels, and
  * responsive presentation. Scene and simulation internals remain behind the
  * controller's public API.
+ *
+ * Moon selection keeps the parent planet's local system in view: clicking a
+ * moon focuses that moon, reveals its sibling moon labels, and the inspector
+ * continues to list the major moons belonging to the same parent body.
  */
 export class SolarSystemUI {
   readonly element: HTMLElement;
@@ -380,6 +384,9 @@ export class SolarSystemUI {
         return;
       }
       this.controls.update();
+      const state = this.controller.getState();
+      this.controlPanel.updateSimulation(state);
+      this.infoPanel.updateSimulation(state);
       this.labels.update();
       this.animationFrameId = window.requestAnimationFrame(frame);
     };

@@ -43,11 +43,13 @@ input:focus-visible {
   outline-offset: 2px;
 }
 
-#app.solar-ui {
+.solar-ui {
   position: relative;
   width: 100%;
   min-height: 100vh;
+  min-height: 100svh;
   height: 100vh;
+  height: 100svh;
   overflow: hidden;
   isolation: isolate;
   background:
@@ -55,7 +57,7 @@ input:focus-visible {
     #02040c;
 }
 
-#app.solar-ui > .solar-ui__stage {
+.solar-ui > .solar-ui__stage {
   position: absolute;
   inset: 0;
   z-index: 0;
@@ -597,11 +599,6 @@ input:focus-visible {
 
   .info-panel.is-empty .panel-title {
     font-size: 14px;
-  }
-
-  .info-panel:not(.is-empty) .info-panel__description,
-  .info-panel:not(.is-empty) .info-panel__moons {
-    display: none;
   }
 
   .scale-disclaimer {
