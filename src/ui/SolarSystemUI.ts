@@ -55,9 +55,11 @@ export class SolarSystemUI {
   private readonly tooltipPrimary: HTMLSpanElement;
   private readonly tooltipSecondary: HTMLSpanElement;
   private readonly tooltipType: HTMLSpanElement;
+  private readonly panelToggleButton: HTMLButtonElement;
   private readonly eventCleanups: Array<() => void> = [];
   private readonly ownsApplication: boolean;
   private labelsVisible = true;
+  private panelsHidden = false;
   private animationFrameId: number | undefined;
   private unsubscribe?: () => void;
   private disposed = false;
@@ -100,6 +102,8 @@ export class SolarSystemUI {
     this.overlay = document.createElement('div');
     this.overlay.className = 'solar-ui__overlay';
     this.overlay.append(this.createHeader());
+    this.panelToggleButton = this.createPanelToggle();
+    this.overlay.append(this.panelToggleButton);
 
     this.controlPanel = new ControlPanel({
       onPlay: () => this.application.play(),
@@ -219,6 +223,29 @@ export class SolarSystemUI {
     subtitle.textContent = 'A visualization of real astronomical data compressed with logarithmic scaling.';
     header.append(kicker, title, subtitle);
     return header;
+  }
+
+  private createPanelToggle(): HTMLButtonElement {
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.className = 'panel-toggle-button secondary-button';
+    button.textContent = 'Hide panels';
+    button.title = 'Hide Solar System panels';
+    button.setAttribute('aria-label', 'Hide panels');
+    button.setAttribute('aria-pressed', 'false');
+    button.addEventListener('click', () => this.setPanelsHidden(!this.panelsHidden));
+    return button;
+  }
+
+  private setPanelsHidden(hidden: boolean): void {
+    this.panelsHidden = hidden;
+    this.element.classList.toggle('solar-ui--panels-hidden', hidden);
+    const label = hidden ? 'Show panels' : 'Hide panels';
+    const title = hidden ? 'Show Solar System panels' : 'Hide Solar System panels';
+    this.panelToggleButton.textContent = label;
+    this.panelToggleButton.title = title;
+    this.panelToggleButton.setAttribute('aria-label', label);
+    this.panelToggleButton.setAttribute('aria-pressed', String(hidden));
   }
 
   private createScaleDisclaimer(): HTMLElement {

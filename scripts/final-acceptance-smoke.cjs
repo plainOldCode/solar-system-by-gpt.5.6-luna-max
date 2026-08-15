@@ -327,6 +327,32 @@ function writeReport(report) {
 
     await page.setViewportSize({ width: 390, height: 844 });
     await page.waitForTimeout(350);
+    const panelToggle = page.getByRole('button', { name: 'Hide panels', exact: true });
+    assert(await panelToggle.count() === 1 && await panelToggle.isVisible(), 'mobile panel toggle is visible in the upper-right menu area');
+    const panelToggleBounds = await panelToggle.boundingBox();
+    assert(Boolean(panelToggleBounds && panelToggleBounds.x >= 390 - panelToggleBounds.width - 24 && panelToggleBounds.y <= 24), 'mobile panel toggle is positioned in the upper-right corner', panelToggleBounds);
+    await panelToggle.click();
+    await page.waitForTimeout(80);
+    const hiddenPanels = await page.evaluate(() => ({
+      rootHiddenState: document.querySelector('.solar-ui')?.classList.contains('solar-ui--panels-hidden') ?? false,
+      headerDisplay: getComputedStyle(document.querySelector('.solar-header')).display,
+      controlDisplay: getComputedStyle(document.querySelector('.control-panel')).display,
+      infoDisplay: getComputedStyle(document.querySelector('.info-panel')).display,
+      disclaimerDisplay: getComputedStyle(document.querySelector('.scale-disclaimer')).display,
+    }));
+    assert(hiddenPanels.rootHiddenState && hiddenPanels.headerDisplay === 'none' && hiddenPanels.controlDisplay === 'none' && hiddenPanels.infoDisplay === 'none' && hiddenPanels.disclaimerDisplay === 'none', 'Hide panels collapses the mobile overlay panels', hiddenPanels);
+    const showPanelsButton = page.getByRole('button', { name: 'Show panels', exact: true });
+    assert(await showPanelsButton.count() === 1 && await showPanelsButton.isVisible(), 'mobile panel toggle changes to Show panels while collapsed');
+    await showPanelsButton.click();
+    await page.waitForTimeout(80);
+    const restoredPanels = await page.evaluate(() => ({
+      rootHiddenState: document.querySelector('.solar-ui')?.classList.contains('solar-ui--panels-hidden') ?? true,
+      headerDisplay: getComputedStyle(document.querySelector('.solar-header')).display,
+      controlDisplay: getComputedStyle(document.querySelector('.control-panel')).display,
+      infoDisplay: getComputedStyle(document.querySelector('.info-panel')).display,
+      disclaimerDisplay: getComputedStyle(document.querySelector('.scale-disclaimer')).display,
+    }));
+    assert(!restoredPanels.rootHiddenState && restoredPanels.headerDisplay !== 'none' && restoredPanels.controlDisplay !== 'none' && restoredPanels.infoDisplay !== 'none' && restoredPanels.disclaimerDisplay !== 'none', 'Show panels restores the mobile overlay panels', restoredPanels);
     const mobile = await page.evaluate(() => {
       const root = document.querySelector('.solar-ui');
       const canvas = document.querySelector('canvas.solar-system-canvas');

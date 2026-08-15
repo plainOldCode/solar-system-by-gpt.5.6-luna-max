@@ -151,6 +151,36 @@ input:focus-visible {
   pointer-events: auto;
 }
 
+.panel-toggle-button {
+  display: none;
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  z-index: 10;
+  min-width: 44px;
+  min-height: 44px;
+  padding: 0 12px;
+  border-radius: 999px;
+  background: rgba(7, 18, 38, 0.88);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(14px) saturate(125%);
+}
+
+.solar-ui--panels-hidden .solar-header,
+.solar-ui--panels-hidden .control-panel,
+.solar-ui--panels-hidden .info-panel,
+.solar-ui--panels-hidden .scale-disclaimer,
+.solar-ui--panels-hidden .hover-tooltip {
+  display: none;
+}
+
+.solar-ui--panels-hidden .panel-toggle-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+}
+
 .solar-header {
   position: absolute;
   top: 22px;
@@ -547,6 +577,13 @@ input:focus-visible {
     max-width: min(230px, calc(100vw - 28px));
     margin-top: 7px;
     font-size: 11px;
+  }
+
+  .panel-toggle-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    white-space: nowrap;
   }
 
   .control-panel {
