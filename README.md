@@ -1,36 +1,38 @@
 # Three.js Logarithmic Solar System
 
 > Created by GPT-5.6 Luna Max on Hermes.
+>
+> English | [Korean](README.ko.md)
 
-브라우저에서 실제 천문 데이터를 탐색할 수 있는 반응형 Three.js 태양계 시각화 프로젝트다. 태양부터 명왕성까지와 주요 위성을 포함하며, 실제 물리값과 화면 표시용 거리·크기 스케일을 분리한다.
+A responsive Three.js visualization that lets users explore the Solar System using real astronomical data. It includes the Sun through Pluto and major moons while keeping physical values separate from display-space distance and size scales.
 
 ## Original implementation prompt
 
-이 프로젝트의 원본 구현 프롬프트:
+The original implementation prompt for this project is available here:
 
 - [Three.js Logarithmic Solar System Demo — Implementation Prompt](https://gist.github.com/plainOldCode/fb2e3ea48caada23107704628c2a9384)
-- 저장소 내 보존본: [`docs/threejs_solar_system_demo_prompt_en.md`](docs/threejs_solar_system_demo_prompt_en.md)
+- Preserved in the repository as [`docs/threejs_solar_system_demo_prompt_en.md`](docs/threejs_solar_system_demo_prompt_en.md)
 
 ## Features
 
-- 태양, 수성, 금성, 지구, 화성, 목성, 토성, 천왕성, 해왕성, 명왕성
-- 지구의 달, 화성의 Phobos/Deimos, 목성의 Galilean moons, 토성·천왕성·해왕성·명왕성의 주요 위성
-- `OrbitControls` 카메라 조작: orbit, zoom, pan
-- Raycaster 기반 천체 선택 및 부드러운 카메라 focus
-- 천체 hover tooltip과 실제 천문 데이터/현재 렌더링 값을 함께 보여주는 inspector
-- Play/Pause, 시간 배율, 시간 초기화
-- 궤도선, 라벨, 위성, 위성 궤도, 별 필드 표시 제어
-- 거리 표현: `Log Scale`, `Linear Scale`, `Focus Scale`
-- 크기 표현: `Enhanced Visibility`, `Relative Size`, `Uniform Markers`
-- 절차적으로 생성되는 별 필드·재질·궤도선 — 외부 텍스처 없이 실행
-- 데스크톱 및 모바일 responsive layout
-- 모바일 우측 상단 `Hide panels` / `Show panels` 토글로 HUD 패널 접기·복원
+- The Sun, Mercury, Venus, Earth, Mars, Jupiter, Saturn, Uranus, Neptune, and Pluto
+- Earth's Moon; Phobos and Deimos; Jupiter's Galilean moons; and major moons of Saturn, Uranus, Neptune, and Pluto
+- `OrbitControls` camera interaction: orbit, zoom, and pan
+- Raycaster-based body selection with smooth camera focus transitions
+- Hover tooltips and an inspector that shows real astronomical data alongside rendered values
+- Play/Pause, time-scale selection, and time reset
+- Visibility controls for orbit lines, labels, moons, moon orbits, and the star field
+- Distance modes: `Log Scale`, `Linear Scale`, and `Focus Scale`
+- Body-size modes: `Enhanced Visibility`, `Relative Size`, and `Uniform Markers`
+- Procedurally generated star field, materials, and orbit lines with no external texture assets
+- Responsive desktop and mobile layout
+- Mobile `Hide panels` / `Show panels` toggle for collapsing and restoring the HUD panels
 
 ## Requirements
 
-- Node.js 20.19 이상
+- Node.js 20.19 or later
 - npm
-- WebGL을 지원하는 최신 브라우저
+- A modern browser with WebGL support
 
 ## Install and run
 
@@ -39,33 +41,33 @@ npm install
 npm run dev
 ```
 
-기본 개발 서버는 `http://127.0.0.1:5173/`에서 실행된다.
+The development server runs at `http://127.0.0.1:5173/` by default.
 
 ## Project commands
 
 ```bash
-npm run typecheck   # TypeScript 타입 검사
-npm run build       # 타입 검사와 Vite production build
-npm run preview     # production build 미리보기
-npm audit           # 전체 dependency audit
-npm audit --omit=dev # production dependency audit
+npm run typecheck    # TypeScript type checking
+npm run build        # Type checking followed by a Vite production build
+npm run preview      # Preview the production build
+npm audit            # Audit all dependencies
+npm audit --omit=dev # Audit production dependencies
 ```
 
 ### Browser smoke validation
 
-`final-acceptance-smoke.cjs`는 실행 중인 Vite 서버에 Playwright와 Chrome/Chromium으로 접속해 상호작용·반응형 레이아웃·콘솔 오류를 검증한다. Playwright는 애플리케이션 runtime dependency가 아니므로 별도 경로를 지정할 수 있다.
+`final-acceptance-smoke.cjs` connects to a running Vite server with Playwright and Chrome/Chromium to validate interactions, responsive layout, and browser errors. Playwright is not an application runtime dependency, so its module path can be supplied separately.
 
 ```bash
-# 별도 터미널에서 Vite 서버 실행
+# Run the Vite server in a separate terminal
 npm run dev -- --host 127.0.0.1 --port 5173
 
-# Playwright가 저장된 경로를 지정해 smoke 실행
+# Run the smoke test with the Playwright module path
 PLAYWRIGHT_MODULE=/path/to/playwright \
 SMOKE_OUTPUT=/tmp/solar-system-smoke.json \
 node scripts/final-acceptance-smoke.cjs
 ```
 
-`BASE_URL`로 다른 개발 서버 주소를 지정할 수 있으며, `SMOKE_SCREENSHOT_DIR`를 지정하면 desktop/mobile screenshot을 생성한다.
+Use `BASE_URL` to target a different development server. Set `SMOKE_SCREENSHOT_DIR` to generate desktop and mobile screenshots.
 
 ## Architecture
 
@@ -84,13 +86,13 @@ node scripts/final-acceptance-smoke.cjs
 │   ├── verify-prior-commits.mjs
 │   └── verify-task-scope.mjs
 ├── src/
-│   ├── data/        # 물리 데이터와 provenance
-│   ├── rendering/   # renderer, procedural materials, orbit lines, star field
-│   ├── scales/      # 거리·천체 크기 표시 스케일
-│   ├── scene/       # Three.js scene/controller/body graph
-│   ├── simulation/  # 시간과 궤도 계산
-│   ├── styles/      # HUD와 responsive CSS
-│   └── ui/          # control panel, inspector, labels, mobile panel toggle
+│   ├── data/        # Physical data and provenance
+│   ├── rendering/   # Renderer, procedural materials, orbit lines, and star field
+│   ├── scales/      # Distance and body-size display scales
+│   ├── scene/       # Three.js scene, controller, and body graph
+│   ├── simulation/  # Timekeeping and orbital calculations
+│   ├── styles/      # HUD and responsive CSS
+│   └── ui/          # Control panel, inspector, labels, and mobile panel toggle
 ├── index.html
 ├── package.json
 ├── package-lock.json
@@ -100,23 +102,23 @@ node scripts/final-acceptance-smoke.cjs
 
 ## Astronomical data and provenance
 
-물리 데이터의 source of truth는 [`src/data/solarSystemData.ts`](src/data/solarSystemData.ts)이며, 출처 매핑은 다음 문서에 기록한다.
+The source of truth for physical data is [`src/data/solarSystemData.ts`](src/data/solarSystemData.ts). Source mappings are documented in:
 
 - [`docs/astronomical-source-manifest.md`](docs/astronomical-source-manifest.md)
 - [`docs/astronomical-source-manifest.json`](docs/astronomical-source-manifest.json)
 - NASA NSSDC Planetary Fact Sheet
 - NASA/JPL Solar System Dynamics physical-parameter tables
-- Pluto 관련 JPL Small-Body Database 교차 확인
+- JPL Small-Body Database cross-checks for Pluto
 
-값은 안정적인 브라우저 시각화를 위한 정적·반올림 데이터다. 실시간 ephemeris state vector가 아니며, 데이터 레코드의 `sourceIds`로 provenance를 추적한다.
+The values are static, rounded parameters chosen for stable browser visualization. They are not live ephemeris state vectors, and provenance is tracked through each data record's `sourceIds`.
 
 ## Physical scale versus display scale
 
-실제 천문값은 렌더링 편의를 위해 변경하지 않고, 표시 함수가 별도의 render-space 값을 계산한다.
+Physical astronomical values are preserved; display functions calculate separate render-space values for visualization.
 
 ### Heliocentric distance
 
-기본 태양계 화면은 다음과 같은 logarithmic mapping을 사용한다.
+The default Solar System view uses the following logarithmic mapping:
 
 ```text
 bounded = clamp(distanceAU, 0, maxDistanceAU)
@@ -125,33 +127,33 @@ rendered = minRenderDistance
          + normalized * (maxRenderDistance - minRenderDistance)
 ```
 
-기본 범위는 대략 `maxDistanceAU = 39.5`, `minRenderDistance = 16`, `maxRenderDistance = 190`이다. Linear 비교 모드와 선택된 행성계 중심의 Focus 모드도 제공한다.
+The default range is approximately `maxDistanceAU = 39.5`, `minRenderDistance = 16`, and `maxRenderDistance = 190`. Linear comparison mode and a Focus mode centered on the selected planetary system are also available.
 
 ### Moon distance
 
-위성은 전역 태양계 좌표가 아니라 부모 천체 중심의 local coordinate system에서 별도 logarithmic mapping을 사용한다. 따라서 실제 위성 간 거리 순서를 보존하면서 부모 행성과 겹치지 않게 표시할 수 있다.
+Moons use a separate logarithmic mapping in a local coordinate system centered on their parent body rather than the global Solar System coordinates. This preserves the ordering of actual moon distances while keeping moons visually separate from their parent.
 
 ### Body size
 
-천체 반지름은 실제 `radiusKm`를 보존하고, 화면에서는 독립적인 visibility mapping을 사용한다.
+Actual body radii are preserved as `radiusKm`, while the display uses an independent visibility mapping.
 
-- Enhanced Visibility: 행성·위성을 제곱근 기반으로 확대
-- Relative Size: 실제 크기 순서를 더 강하게 반영
-- Uniform Markers: 비교 가능한 표식 크기
-- 태양은 별도 render radius로 처리
+- Enhanced Visibility: enlarges planets and moons using a square-root-based mapping
+- Relative Size: emphasizes actual size ordering more strongly
+- Uniform Markers: provides comparable marker sizes
+- The Sun uses a separate render radius
 
-따라서 화면의 궤도 반지름과 천체 반지름은 같은 물리 단위의 균일 스케일이 아니다. UI에도 이 차이를 명시한다.
+Rendered orbital radii and rendered body radii therefore do not share one uniform physical scale. The UI states this distinction explicitly.
 
 ## Validation status
 
-현재 구현에 대해 다음 검증을 수행한다.
+The current implementation is validated with:
 
 - `npm run typecheck`
 - `npm run build`
 - `npm audit`
-- browser smoke: desktop interaction, raycast selection, camera focus, simulation controls, scale selectors, moon selection, mobile resize, mobile panel hide/show, disposal
+- Browser smoke coverage for desktop interaction, raycast selection, camera focus, simulation controls, scale selectors, moon selection, mobile resize, mobile panel hide/show, and resource disposal
 
-최근 smoke 결과:
+Recent smoke result:
 
 ```text
 88/88 assertions passed
@@ -160,19 +162,19 @@ page errors: 0
 request failures: 0
 ```
 
-생성된 검증 산출물은 [`evidence/`](evidence/)에 보관한다. `node_modules/`, `dist/`, `.vite/`, 환경 파일, 로그는 `.gitignore`로 추적하지 않는다.
+Generated validation artifacts are kept in [`evidence/`](evidence/). `node_modules/`, `dist/`, `.vite/`, environment files, and logs are excluded by `.gitignore`.
 
 ## Security and privacy
 
-- 애플리케이션 runtime에 API key, OAuth token, password, private key가 필요하지 않다.
-- `.env` 및 환경별 `.env.*` 파일은 Git에서 제외한다. 예제 환경 파일이 필요하면 `.env.example`만 커밋한다.
-- 로컬 사용자명과 절대 workspace 경로는 공개 문서에서 제거하고 `<repo-root>` 또는 상대 경로로 표현한다.
-- 현재 저장소에는 외부 이미지·폰트·오디오·비디오 asset이 없고, tracked PNG는 프로젝트 검증용으로 생성된 screenshot이다.
-- `LICENSE` 또는 `NOTICE` 파일은 아직 선언하지 않았다. 저장소를 볼 수 있다는 사실만으로 재사용 권한이 부여되는 것은 아니므로, 배포 전에 프로젝트 라이선스를 별도로 결정해야 한다.
+- The application does not require API keys, OAuth tokens, passwords, or private keys at runtime.
+- `.env` and environment-specific `.env.*` files are excluded from Git. Commit only `.env.example` if an example environment file is needed.
+- Local usernames and absolute workspace paths are omitted from public documentation and represented with `<repo-root>` or repository-relative paths.
+- The repository has no external image, font, audio, or video assets; tracked PNG files are project-generated validation screenshots.
+- No `LICENSE` or `NOTICE` file has been declared yet. Repository visibility alone does not grant reuse permission, so a project license should be chosen separately before reuse or redistribution.
 
 ## Git workflow
 
-기본 브랜치는 `main`이다. 변경 후에는 다음 순서로 확인한다.
+The default branch is `main`. After making a change:
 
 ```bash
 git status --short --branch
@@ -183,4 +185,4 @@ git add <intended-files>
 git commit -m "<scoped message>"
 ```
 
-생성 파일과 의존성 디렉터리를 실수로 커밋하지 않도록 staging 전에 `git diff --cached --name-only`를 확인한다.
+Before staging, inspect `git diff --cached --name-only` to avoid accidentally committing generated files or dependency directories.
